@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13/11/2014 15:37:18 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="utn.sau.hp.com.modelo.Tutores" table="tutores" catalog="syspa">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="dni" type="int">
+            <column name="DNI" precision="8" scale="0" not-null="true" />
+        </property>
+        <property name="tutorEmail" type="string">
+            <column name="TutorEmail" length="250" />
+        </property>
+        <property name="tutorTelefono" type="string">
+            <column name="TutorTelefono" length="250" />
+        </property>
+        <property name="tutorCargo" type="string">
+            <column name="TutorCargo" length="250" />
+        </property>
+        <property name="apellidoNombre" type="string">
+            <column name="ApellidoNombre" length="250" not-null="true" />
+        </property>
+        <property name="cuil" type="long">
+            <column name="CUIL" precision="11" scale="0" not-null="true" />
+        </property>
+        <set name="conveniosparticulareses" table="conveniosparticulares" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="tutore_id" not-null="true" />
+            </key>
+            <one-to-many class="utn.sau.hp.com.modelo.Conveniosparticulares" />
+        </set>
+    </class>
+</hibernate-mapping>

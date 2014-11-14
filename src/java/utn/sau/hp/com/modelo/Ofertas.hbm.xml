@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13/11/2014 15:37:18 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="utn.sau.hp.com.modelo.Ofertas" table="ofertas" catalog="syspa">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="empresas" class="utn.sau.hp.com.modelo.Empresas" fetch="select">
+            <column name="empresa_id" not-null="true" />
+        </many-to-one>
+        <property name="ofertaVigenciaDesde" type="date">
+            <column name="OfertaVigenciaDesde" length="10" not-null="true" />
+        </property>
+        <property name="ofertaVigenciaHasta" type="date">
+            <column name="OfertaVigenciaHasta" length="10" not-null="true" />
+        </property>
+        <property name="ofertaDescripcion" type="string">
+            <column name="OfertaDescripcion" length="512" not-null="true" />
+        </property>
+        <set name="postulacioneses" table="postulaciones" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="oferta_id" not-null="true" />
+            </key>
+            <one-to-many class="utn.sau.hp.com.modelo.Postulaciones" />
+        </set>
+        <set name="conveniosparticulareses" table="conveniosparticulares" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="oferta_id" />
+            </key>
+            <one-to-many class="utn.sau.hp.com.modelo.Conveniosparticulares" />
+        </set>
+        <set name="ofertascarrerases" table="ofertascarreras" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="oferta_id" not-null="true" />
+            </key>
+            <one-to-many class="utn.sau.hp.com.modelo.Ofertascarreras" />
+        </set>
+        <set name="requisitoscompetenciases" table="requisitoscompetencias" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="oferta_id" not-null="true" />
+            </key>
+            <one-to-many class="utn.sau.hp.com.modelo.Requisitoscompetencias" />
+        </set>
+    </class>
+</hibernate-mapping>

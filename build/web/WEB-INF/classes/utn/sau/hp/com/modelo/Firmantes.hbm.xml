@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13/11/2014 15:37:18 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="utn.sau.hp.com.modelo.Firmantes" table="firmantes" catalog="syspa">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="anexos" class="utn.sau.hp.com.modelo.Anexos" fetch="select">
+            <column name="anexo_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="empresas" class="utn.sau.hp.com.modelo.Empresas" fetch="select">
+            <column name="empresa_id" not-null="true" />
+        </many-to-one>
+        <property name="firmanteCuil" type="long">
+            <column name="FirmanteCUIL" not-null="true" />
+        </property>
+        <property name="empresaCuit" type="long">
+            <column name="EmpresaCUIT" not-null="true" />
+        </property>
+        <property name="firmanteNombre" type="string">
+            <column name="FirmanteNombre" length="250" not-null="true" />
+        </property>
+        <property name="firmanteApellido" type="string">
+            <column name="FirmanteApellido" length="250" not-null="true" />
+        </property>
+        <property name="firmanteTelefono" type="string">
+            <column name="FirmanteTelefono" length="20" />
+        </property>
+        <property name="firmanteDireccion" type="string">
+            <column name="FirmanteDireccion" length="512" />
+        </property>
+        <property name="firmanteCorreo" type="string">
+            <column name="FirmanteCorreo" length="250" />
+        </property>
+        <property name="firmanteCargo" type="string">
+            <column name="FirmanteCargo" length="250" />
+        </property>
+        <property name="firmanteFechaBaja" type="date">
+            <column name="FirmanteFechaBaja" length="10" />
+        </property>
+        <property name="firmanteDni" type="java.lang.Integer">
+            <column name="FirmanteDNI" precision="8" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

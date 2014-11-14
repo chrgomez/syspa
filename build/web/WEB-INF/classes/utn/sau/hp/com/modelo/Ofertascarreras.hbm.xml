@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13/11/2014 15:37:18 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="utn.sau.hp.com.modelo.Ofertascarreras" table="ofertascarreras" catalog="syspa">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="carreras" class="utn.sau.hp.com.modelo.Carreras" fetch="select">
+            <column name="carrera_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="ofertas" class="utn.sau.hp.com.modelo.Ofertas" fetch="select">
+            <column name="oferta_id" not-null="true" />
+        </many-to-one>
+        <set name="requisitosmateriases" table="requisitosmaterias" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ofertacarreas_id" not-null="true" />
+            </key>
+            <one-to-many class="utn.sau.hp.com.modelo.Requisitosmaterias" />
+        </set>
+    </class>
+</hibernate-mapping>

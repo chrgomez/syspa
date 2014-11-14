@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13/11/2014 15:37:18 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="utn.sau.hp.com.modelo.Adendas" table="adendas" catalog="syspa">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="conveniosparticulares" class="utn.sau.hp.com.modelo.Conveniosparticulares" fetch="select">
+            <column name="convenioparticulare_id" not-null="true" />
+        </many-to-one>
+        <property name="fechaFirmaConvenioAnterior" type="date">
+            <column name="FechaFirmaConvenioAnterior" length="10" not-null="true" />
+        </property>
+        <property name="adendaDescripcion" type="string">
+            <column name="AdendaDescripcion" length="2048" not-null="true" />
+        </property>
+        <property name="adendaArchivoAdjunto" type="string">
+            <column name="AdendaArchivoAdjunto" length="250" not-null="true" />
+        </property>
+        <property name="nombreArtAnterior" type="string">
+            <column name="NombreArtAnterior" length="250" not-null="true" />
+        </property>
+        <property name="nombreObraSocialAnterior" type="string">
+            <column name="NombreObraSocialAnterior" length="250" not-null="true" />
+        </property>
+        <property name="importeObraSocialAnterior" type="int">
+            <column name="ImporteObraSocialAnterior" precision="5" scale="0" not-null="true" />
+        </property>
+        <property name="importeAsignacionEstimuloAnterior" type="int">
+            <column name="ImporteAsignacionEstimuloAnterior" precision="5" scale="0" not-null="true" />
+        </property>
+        <property name="tutorIdAnterior" type="java.lang.Integer">
+            <column name="TutorIdAnterior" />
+        </property>
+        <property name="fechaAltaObraSocialAnterior" type="date">
+            <column name="FechaAltaObraSocialAnterior" length="10" not-null="true" />
+        </property>
+        <property name="pagaAsignacionEstimuloAnterior" type="byte">
+            <column name="PagaAsignacionEstimuloAnterior" not-null="true" />
+        </property>
+        <property name="fechaAltaArtanterior" type="date">
+            <column name="FechaAltaARTAnterior" length="10" not-null="true" />
+        </property>
+        <property name="importeArtanterior" type="int">
+            <column name="ImporteARTAnterior" precision="5" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

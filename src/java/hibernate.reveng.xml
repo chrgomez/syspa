@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="syspa"/>
+  <table-filter match-name="pagos_arts"/>
+  <table-filter match-name="alumnos"/>
+  <table-filter match-name="alumnosmaterias"/>
+  <table-filter match-name="tareas"/>
+  <table-filter match-name="areas"/>
+  <table-filter match-name="postulaciones"/>
+  <table-filter match-name="conveniosparticulares"/>
+  <table-filter match-name="estadocuentas"/>
+  <table-filter match-name="adendas"/>
+  <table-filter match-name="ofertascarreras"/>
+  <table-filter match-name="empresas"/>
+  <table-filter match-name="anexos"/>
+  <table-filter match-name="localidades"/>
+  <table-filter match-name="ofertas"/>
+  <table-filter match-name="actividades"/>
+  <table-filter match-name="departamentos"/>
+  <table-filter match-name="provincias"/>
+  <table-filter match-name="competencias"/>
+  <table-filter match-name="requisitoscompetencias"/>
+  <table-filter match-name="tutores"/>
+  <table-filter match-name="firmantes"/>
+  <table-filter match-name="materias"/>
+  <table-filter match-name="reglamentaciones"/>
+  <table-filter match-name="requisitosmaterias"/>
+  <table-filter match-name="carreras"/>
+  <table-filter match-name="pagos_os"/>
+</hibernate-reverse-engineering>

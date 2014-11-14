@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/syspa</property>
+    <property name="hibernate.connection.username">syspa</property>
+    <property name="hibernate.connection.password">hp2014</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <mapping resource="utn/sau/hp/com/modelo/Provincias.hbm.xml"/>
+    <mapping resource="utn/sau/hp/com/modelo/Ofertas.hbm.xml"/>
+    <mapping resource="utn/sau/hp/com/modelo/Alumnosmaterias.hbm.xml"/>
+    <mapping resource="utn/sau/hp/com/modelo/Empresas.hbm.xml"/>
+    <mapping resource="utn/sau/hp/com/modelo/Areas.hbm.xml"/>
+    <mapping resource="utn/sau/hp/com/modelo/Firmantes.hbm.xml"/>
+    <mapping resource="utn/sau/hp/com/modelo/Requisitoscompetencias.hbm.xml"/>
+    <mapping resource="utn/sau/hp/com/modelo/Conveniosparticulares.hbm.xml"/>
+    <mapping resource="utn/sau/hp/com/modelo/Departamentos.hbm.xml"/>
+    <mapping resource="utn/sau/hp/com/modelo/Postulaciones.hbm.xml"/>
+    <mapping resource="utn/sau/hp/com/modelo/PagosOs.hbm.xml"/>
+    <mapping resource="utn/sau/hp/com/modelo/Requisitosmaterias.hbm.xml"/>
+    <mapping resource="utn/sau/hp/com/modelo/Anexos.hbm.xml"/>
+    <mapping resource="utn/sau/hp/com/modelo/Tutores.hbm.xml"/>
+    <mapping resource="utn/sau/hp/com/modelo/Actividades.hbm.xml"/>
+    <mapping resource="utn/sau/hp/com/modelo/PagosArts.hbm.xml"/>
+    <mapping resource="utn/sau/hp/com/modelo/Competencias.hbm.xml"/>
+    <mapping resource="utn/sau/hp/com/modelo/Ofertascarreras.hbm.xml"/>
+    <mapping resource="utn/sau/hp/com/modelo/Localidades.hbm.xml"/>
+    <mapping resource="utn/sau/hp/com/modelo/Adendas.hbm.xml"/>
+    <mapping resource="utn/sau/hp/com/modelo/Carreras.hbm.xml"/>
+    <mapping resource="utn/sau/hp/com/modelo/Reglamentaciones.hbm.xml"/>
+    <mapping resource="utn/sau/hp/com/modelo/Alumnos.hbm.xml"/>
+    <mapping resource="utn/sau/hp/com/modelo/Tareas.hbm.xml"/>
+    <mapping resource="utn/sau/hp/com/modelo/Estadocuentas.hbm.xml"/>
+    <mapping resource="utn/sau/hp/com/modelo/Materias.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

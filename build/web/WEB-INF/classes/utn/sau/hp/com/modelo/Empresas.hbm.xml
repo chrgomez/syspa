@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13/11/2014 15:37:18 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="utn.sau.hp.com.modelo.Empresas" table="empresas" catalog="syspa">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="empresaCuit" type="long">
+            <column name="EmpresaCUIT" precision="11" scale="0" not-null="true" />
+        </property>
+        <property name="idLocalidade" type="int">
+            <column name="id_localidade" not-null="true" />
+        </property>
+        <property name="convenioFecha" type="date">
+            <column name="ConvenioFecha" length="10" not-null="true" />
+        </property>
+        <property name="porcentajeGasto" type="java.lang.Integer">
+            <column name="PorcentajeGasto" />
+        </property>
+        <property name="empresaRazonSocial" type="string">
+            <column name="EmpresaRazonSocial" length="250" not-null="true" />
+        </property>
+        <property name="empresaActividad" type="string">
+            <column name="EmpresaActividad" length="512" />
+        </property>
+        <property name="empresaDireccion" type="string">
+            <column name="EmpresaDireccion" length="250" />
+        </property>
+        <property name="empresaCorreo" type="string">
+            <column name="EmpresaCorreo" length="250" />
+        </property>
+        <property name="empresaTelefono" type="string">
+            <column name="EmpresaTelefono" length="20" />
+        </property>
+        <property name="contactoNombre" type="string">
+            <column name="ContactoNombre" length="250" />
+        </property>
+        <property name="contactoTelefono" type="string">
+            <column name="ContactoTelefono" length="20" />
+        </property>
+        <property name="contactoCorreo" type="string">
+            <column name="ContactoCorreo" length="250" />
+        </property>
+        <property name="representanteNombre" type="string">
+            <column name="RepresentanteNombre" length="250" />
+        </property>
+        <property name="representanteDni" type="java.lang.Long">
+            <column name="RepresentanteDNI" />
+        </property>
+        <property name="pagaObraSocial" type="boolean">
+            <column name="PagaObraSocial" not-null="true" />
+        </property>
+        <property name="pagaSeguroTrabajo" type="boolean">
+            <column name="PagaSeguroTrabajo" not-null="true" />
+        </property>
+        <property name="pagaAsignacionEstimulo" type="boolean">
+            <column name="PagaAsignacionEstimulo" not-null="true" />
+        </property>
+        <property name="convenioFechaBaja" type="date">
+            <column name="ConvenioFechaBaja" length="10" />
+        </property>
+        <property name="motivoBaja" type="string">
+            <column name="MotivoBaja" length="250" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="250" />
+        </property>
+        <property name="archivoCm" type="binary">
+            <column name="ArchivoCM" />
+        </property>
+        <set name="estadocuentases" table="estadocuentas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="empresa_id" not-null="true" />
+            </key>
+            <one-to-many class="utn.sau.hp.com.modelo.Estadocuentas" />
+        </set>
+        <set name="ofertases" table="ofertas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="empresa_id" not-null="true" />
+            </key>
+            <one-to-many class="utn.sau.hp.com.modelo.Ofertas" />
+        </set>
+        <set name="anexoses" table="anexos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="empresa_id" not-null="true" />
+            </key>
+            <one-to-many class="utn.sau.hp.com.modelo.Anexos" />
+        </set>
+        <set name="conveniosparticulareses" table="conveniosparticulares" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="empresa_id" not-null="true" />
+            </key>
+            <one-to-many class="utn.sau.hp.com.modelo.Conveniosparticulares" />
+        </set>
+        <set name="firmanteses" table="firmantes" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="empresa_id" not-null="true" />
+            </key>
+            <one-to-many class="utn.sau.hp.com.modelo.Firmantes" />
+        </set>
+    </class>
+</hibernate-mapping>

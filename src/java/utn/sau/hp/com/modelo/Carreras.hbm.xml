@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13/11/2014 15:37:18 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="utn.sau.hp.com.modelo.Carreras" table="carreras" catalog="syspa">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="carrera" type="string">
+            <column name="carrera" length="250" not-null="true" />
+        </property>
+        <set name="alumnoses" table="alumnos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="carrera_id" not-null="true" />
+            </key>
+            <one-to-many class="utn.sau.hp.com.modelo.Alumnos" />
+        </set>
+        <set name="conveniosparticulareses" table="conveniosparticulares" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="carrera_id" not-null="true" />
+            </key>
+            <one-to-many class="utn.sau.hp.com.modelo.Conveniosparticulares" />
+        </set>
+        <set name="ofertascarrerases" table="ofertascarreras" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="carrera_id" not-null="true" />
+            </key>
+            <one-to-many class="utn.sau.hp.com.modelo.Ofertascarreras" />
+        </set>
+    </class>
+</hibernate-mapping>
