@@ -16,45 +16,41 @@
     <h:body>
 
         <div id="top">
-            <ui:insert name="top">   
+            <ui:insert name="top">                                   
                 
                 <h:form id="formTop">
                     <p:graphicImage width="100%" height="auto" value="/resources/images/banner.png"/>                                              
                     <p:ajaxStatus  onstart="dlgLoad.show()" oncomplete="dlgLoad.hide()" onerror="dlgLoad.hide()"/>  
-                        <p:dialog widgetVar="dlgLoad" resizable="false" closable="false" modal="true" appendToBody="true"> 
+                        <p:dialog widgetVar="dlgLoad" resizable="false" closable="false" modal="true"> 
                             CARGANDO...
                             <br/>
                             <p:graphicImage value="/resources/images/ajax-loader.gif" style="position: relative;left: 50% ;"/>
                         </p:dialog>  
-                </h:form>
+                </h:form>               
                 
-                <h:form id="formMenu">  
-                    <p:growl id="messages"/>
-
+                <p:growl id="msg" sticky="true" showDetail="true" life="3000" />
+                <h:form id="formMenu">                                          
                     <p:menubar>                                                                      
                         <p:menuitem value="Ofertas" icon="ui-icon-document" action="ofertas" ajax="false"/>
                         <p:menuitem value="Reglamentación" icon="ui-icon-contact" />
-                        <p:menuitem value="Postulaciones" icon="ui-icon-document" />
-
                         <f:facet name="options">
-                            <p:outputLabel style="margin-right:10px" value="#{loginBean.userLoggedIn.apellido} #{loginBean.userLoggedIn.nombre}" />
-                            <p:commandButton type="btnLogin" value="Login" icon="ui-icon-person" update=":formLogin" oncomplete="loginDialog.show()"/> 
-                            <p:menuButton value="Mi Cuenta">
-                                <p:menuitem value="Save" actionListener="#{menuView.save}" update="messages" icon="ui-icon-disk"/>
-                                <p:menuitem value="Update" actionListener="#{menuView.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
+                            <p:outputLabel style="margin-right:10px" value="#{loginBean.userLoggedIn.apellido} #{loginBean.userLoggedIn.nombre} " />
+                            <p:commandButton type="btnLogin" value="Login" icon="ui-icon-person" update="" oncomplete="loginDialog.show()"/> 
+                            <p:menuButton id="cuenta" value="Mi Cuenta"  style='display:none;'>
+                                <p:menuitem value="Save" actionListener="#{menuView.save}" icon="ui-icon-disk"/>
+                                <p:menuitem value="Update" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w"/>
                                 <p:menuitem value="Delete" actionListener="#{menuView.delete}" ajax="false" icon="ui-icon-close"/>
                                 <p:separator />
                                 <p:menuitem value="Homepage" url="http://www.primefaces.org" icon="ui-icon-extlink"/>
                             </p:menuButton>
-                        </f:facet>                                                                       
+                        </f:facet>                        
                     </p:menubar>
                 </h:form>
             </ui:insert>
         </div>
         
         <h:form id="formLogin">     
-            <p:growl id="login" sticky="true" showDetail="true" life="30" />
-            <p:dialog header="Iniciar Sesión" widgetVar="loginDialog" resizable="false" id="loginDlg" showEffect="fade" hideEffect="clip" modal="true">
+            <p:dialog id="loginDlg" header="Iniciar Sesión" widgetVar="loginDialog" resizable="false" showEffect="fade" hideEffect="clip" modal="true">
                 <h:panelGrid  columns="2">
                     <h:outputLabel for="username" value="Usuario:" />
                     <p:inputText id="username" value="#{loginBean.alumno.nroLegajo}" required="true" label="username" />
@@ -63,7 +59,7 @@
                     <p:password id="password" value="#{loginBean.alumno.password}" required="true" label="password" />
 
                     <f:facet name="footer">
-                        <p:commandButton value="Login" update="" actionListener="#{loginBean.login}" onclick="loginDialog.hide();"
+                        <p:commandButton value="Login" update=":msg" actionListener="#{loginBean.login(event)}" onclick="mostrar();"
                                          oncomplete="handleLoginRequest(xhr, status, args)" />
                     </f:facet>  
                 </h:panelGrid>                    
@@ -71,20 +67,25 @@
         </h:form>
 
         <div id="content" class="center_content">
-            <ui:insert name="content">Content</ui:insert>
+            <ui:insert name="content">
+                
+            </ui:insert>
         </div>
         
         <script type="text/javascript">
-            function handleLoginRequest(xhr, status, args) {
+            function mostrar(){
+                    document.getElementById('cuenta').style.display = 'hidden';
+                }
+            
+            function handleLoginRequest(xhr, status, args) {                
                 if(args.validationFailed || !args.loggedIn) {
-                    PF('loginDialog').jq.effect("shake", {times:5}, 100);
+                    PF('#formLogin').jq.effect("shake", {times:3}, 100);
                 }
                 else {
-                    PF('loginDialog').hide();
-                    $('#loginLink').fadeOut();
+                    mostrar;    
                 }
             }
-        </script>
+        </script>       
 
         <div id="bottom" class="ui-widget-header ui-corner-all">
             <ui:insert name="bottom">
