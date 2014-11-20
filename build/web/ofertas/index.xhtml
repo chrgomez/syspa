@@ -12,30 +12,43 @@
 
             <ui:define name="content">
                 <h:form >
-                    <p:dataTable var="oferta" value="#{ofertaBean.listaOfertas}" rows="10" widgetVar="ofertasTable"
-                                 paginator="true"
+                    <p:dataTable id="ofertasTable" var="oferta" value="#{ofertaBean.listaOfertas}" rowKey="#{oferta.id}" widgetVar="ofertasTable"
+                                 paginator="true" rows="10"
+                                 selection="#{ofertaBean.ofertaSelec}"
+                                 selectionMode="single" 
                                  paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                  rowsPerPageTemplate="5,10,15">
                         <f:facet name="header" >
-                            Ofertas de Pasantias
-                        </f:facet>
-                        <p:column headerText="Desde">
-                            <h:outputText value="#{oferta.ofertaVigenciaDesde}" />
+                            Ofertas de Pasantias vigentes
+                        </f:facet>                        
+                        <p:column headerText="Empresa">
+                            <h:outputText value="#{oferta.empresas.empresaRazonSocial}" />
                         </p:column>
-
-                        <p:column headerText="Hasta">
-                            <h:outputText value="#{oferta.ofertaVigenciaHasta}" />
-                        </p:column>
-
+                        
                         <p:column headerText="Descripción">
                             <h:outputText value="#{oferta.ofertaDescripcion}" />
                         </p:column>
 
-                        <p:column headerText="Empresa">
-                            <h:outputText value="#{oferta.empresas.empresaRazonSocial}" />
+                        <p:column headerText="Hasta">
+                            <h:outputText value="#{oferta.ofertaVigenciaHasta}" >
+                                <f:convertDateTime type="date" dateStyle="medium" timeZone="GMT-3"/>
+                        </h:outputText>
+                        </p:column>
+                        
+                        <p:column style="width:3px">
+                            <p:commandButton value="Detalles" icon="ui-icon-calculator" id="btnDetalles" oncomplete="detalleDialog.show()"/>                            
                         </p:column>
                     </p:dataTable>
                 </h:form>
+                
+                <h:form id="formDetalles">     
+                    <p:dialog id="detallesDlg" header="Oferta Vigente: #{oferta.empresas.empresaRazonSocial}" widgetVar="detalleDialog" resizable="false" showEffect="fade" hideEffect="clip" modal="true">
+                    <h:panelGrid  columns="2">
+                        
+                    </h:panelGrid>                    
+                </p:dialog>            
+            </h:form>
+                
             </ui:define>
 
         </ui:composition>

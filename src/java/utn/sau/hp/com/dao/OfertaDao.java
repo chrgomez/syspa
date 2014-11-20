@@ -2,7 +2,6 @@ package utn.sau.hp.com.dao;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import utn.sau.hp.com.modelo.Ofertas;
 import utn.sau.hp.com.util.HibernateUtil;
@@ -29,9 +28,6 @@ public class OfertaDao {
                 return null;                
             }else{
                 System.out.println("LISTAR OFERTAS");
-//                for(int i=0; i<lista.size(); i++){
-//                    Hibernate.initialize(lista.get(i).getEmpresas());
-//                }
                 return lista;
             }
     }

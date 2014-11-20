@@ -10,7 +10,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet name="./css/default.css"/>
         <h:outputStylesheet name="./css/cssLayout.css"/>
-        <title>SiGPa - Sistema de Gestión de Pasantias</title>
+        <title>SYSPA - Sistema de Gestión de Pasantias</title>
     </h:head>
 
     <h:body>
@@ -36,12 +36,16 @@
                         <f:facet name="options">
                             <p:outputLabel style="margin-right:10px" value="#{loginBean.userLoggedIn.apellido} #{loginBean.userLoggedIn.nombre} " />
                             <p:commandButton type="btnLogin" value="Login" icon="ui-icon-person" update="" oncomplete="loginDialog.show()"/> 
-                            <p:menuButton id="cuenta" value="Mi Cuenta"  style='display:none;'>
-                                <p:menuitem value="Save" actionListener="#{menuView.save}" icon="ui-icon-disk"/>
-                                <p:menuitem value="Update" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w"/>
-                                <p:menuitem value="Delete" actionListener="#{menuView.delete}" ajax="false" icon="ui-icon-close"/>
+                            <p:menuButton id="opciones" value="Opciones"  style='display:hidden;'>
+                                <p:menuitem value="Postulaciones" actionListener="#{menuView.save}" icon="ui-icon-disk"/>
+                                <p:menuitem value="Pasantías en curso" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w"/>
+                                <p:menuitem value="Pasantías finalizadas" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w"/>
+                            </p:menuButton>
+                            <p:menuButton id="cuenta" value="Mi Cuenta"  style='display:hidden;'>
+                                <p:menuitem value="Datos personales" actionListener="#{menuView.save}" icon="ui-icon-disk"/>
+                                <p:menuitem value="Suscripción" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w"/>
                                 <p:separator />
-                                <p:menuitem value="Homepage" url="http://www.primefaces.org" icon="ui-icon-extlink"/>
+                                <p:menuitem value="Salir" url="http://www.primefaces.org" icon="ui-icon-extlink"/>
                             </p:menuButton>
                         </f:facet>                        
                     </p:menubar>
@@ -73,17 +77,25 @@
         </div>
         
         <script type="text/javascript">
-            function mostrar(){
+            function loginIn(){
                     document.getElementById('cuenta').style.display = 'hidden';
-                }
+                    document.getElementById('opciones').style.display = 'hidden';
+                    document.getElementById('login').style.display = 'none';
+                    document.writeln("Ingreso al Metodo loginIn()");
+            }
+            
+            function loginOut(){
+                    document.getElementById('cuenta').style.display = 'none';
+                    document.getElementById('opciones').style.display = 'none';
+                    document.getElementById('login').style.display = 'hidden';
+                    document.writeln("Ingreso al Metodo loginOut()");
+            }
             
             function handleLoginRequest(xhr, status, args) {                
                 if(args.validationFailed || !args.loggedIn) {
                     PF('#formLogin').jq.effect("shake", {times:3}, 100);
                 }
-                else {
-                    mostrar;    
-                }
+                loginIn();                 
             }
         </script>       
 
