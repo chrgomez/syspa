@@ -11,15 +11,17 @@
         <ui:composition template="./../template.xhtml">
 
             <ui:define name="content">
-                <h:form >
-                    <p:dataTable id="ofertasTable" var="oferta" value="#{ofertaBean.listaOfertas}" rowKey="#{oferta.id}" widgetVar="ofertasTable"
-                                 paginator="true" rows="10"
+                <h:form id="formOfertas" >
+                    <p:growl id="msgs" showDetail="true" />
+                    
+                    <p:dataTable id="ofertasTable" var="oferta" value="#{ofertaBean.listaOfertas}" rowKey="#{oferta.id}"
                                  selection="#{ofertaBean.ofertaSelec}"
-                                 selectionMode="single" 
+                                 selectionMode="single"
+                                 paginator="true" rows="10"                                 
                                  paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                 rowsPerPageTemplate="5,10,15">
+                                 rowsPerPageTemplate="10,15,30">
                         <f:facet name="header" >
-                            Ofertas de Pasantias vigentes
+                            Ofertas de Pasantias Vigentes
                         </f:facet>                        
                         <p:column headerText="Empresa">
                             <h:outputText value="#{oferta.empresas.empresaRazonSocial}" />
@@ -36,16 +38,32 @@
                         </p:column>
                         
                         <p:column style="width:3px">
-                            <p:commandButton value="Detalles" icon="ui-icon-calculator" id="btnDetalles" oncomplete="detalleDialog.show()"/>                            
+                            <p:commandButton id="detalle" icon="ui-icon-search" title="Detalles"
+                                             update=":formDetalles" oncomplete="detalleDialog.show()"
+                                             process=":formOfertas:ofertasTable"/>                                                                                                                                        
                         </p:column>
                     </p:dataTable>
                 </h:form>
                 
                 <h:form id="formDetalles">     
-                    <p:dialog id="detallesDlg" header="Oferta Vigente: #{oferta.empresas.empresaRazonSocial}" widgetVar="detalleDialog" resizable="false" showEffect="fade" hideEffect="clip" modal="true">
-                    <h:panelGrid  columns="2">
+                    <p:dialog id="detallesDlg" header="Oferta Vigente N°: #{ofertaBean.ofertaSelec.id} - 
+                              Empresa: #{ofertaBean.ofertaSelec.empresas.empresaRazonSocial}
+                              Hasta: #{ofertaBean.ofertaSelec.ofertaVigenciaHasta}" 
+                              widgetVar="detalleDialog" resizable="false" showEffect="fade" hideEffect="clip" modal="true">                                                
                         
-                    </h:panelGrid>                    
+                        <p:dataTable id="competenciasTable" var="com" value="#{requisitosCompetenciaBean.listaRequisitosCompetencia}" 
+                                 rowKey="#{com.id}"
+                                 >
+                        <f:facet name="header" >
+                            Competencias Requeridas
+                        </f:facet>                        
+                        <p:column headerText="Competencia">
+                            <h:outputText value="#{com.competencias.competenciaNombre}" />
+                        </p:column>
+                        <p:column headerText="Area">
+                            <h:outputText value="#{com.competencias.areas.areaDescripcion}" />
+                        </p:column>                       
+                    </p:dataTable>
                 </p:dialog>            
             </h:form>
                 

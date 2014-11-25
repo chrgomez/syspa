@@ -30,31 +30,33 @@
                 
                 <p:growl id="msg" sticky="true" showDetail="true" life="3000" />
                 <h:form id="formMenu">                                          
-                    <p:menubar>                                                                      
+                    <p:menubar >                                                                      
                         <p:menuitem value="Ofertas" icon="ui-icon-document" action="ofertas" ajax="false"/>
                         <p:menuitem value="Reglamentación" icon="ui-icon-contact" />
+                       
                         <f:facet name="options">
                             <p:outputLabel style="margin-right:10px" value="#{loginBean.userLoggedIn.apellido} #{loginBean.userLoggedIn.nombre} " />
-                            <p:commandButton type="btnLogin" value="Login" icon="ui-icon-person" update="" oncomplete="loginDialog.show()"/> 
-                            <p:menuButton id="opciones" value="Opciones"  style='display:hidden;'>
+                            <p:commandButton type="btnLogin" value="Login" icon="ui-icon-person" update="" oncomplete="loginDialog.show()" /> 
+                            <p:menuButton id="opciones" value="Opciones"  style='display:hidden;'>                                
                                 <p:menuitem value="Postulaciones" actionListener="#{menuView.save}" icon="ui-icon-disk"/>
                                 <p:menuitem value="Pasantías en curso" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w"/>
                                 <p:menuitem value="Pasantías finalizadas" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w"/>
                             </p:menuButton>
-                            <p:menuButton id="cuenta" value="Mi Cuenta"  style='display:hidden;'>
+                            <p:menuButton id="cuenta" value="Mi Cuenta"  style='display:hidden;' >
                                 <p:menuitem value="Datos personales" actionListener="#{menuView.save}" icon="ui-icon-disk"/>
                                 <p:menuitem value="Suscripción" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w"/>
                                 <p:separator />
                                 <p:menuitem value="Salir" url="http://www.primefaces.org" icon="ui-icon-extlink"/>
                             </p:menuButton>
-                        </f:facet>                        
+                        </f:facet>     
+                            
                     </p:menubar>
-                </h:form>
+                </h:form>                                  
             </ui:insert>
         </div>
         
         <h:form id="formLogin">     
-            <p:dialog id="loginDlg" header="Iniciar Sesión" widgetVar="loginDialog" resizable="false" showEffect="fade" hideEffect="clip" modal="true">
+            <p:dialog id="loginDlg" header="Iniciar Sesión" widgetVar="loginDialog" resizable="false" showEffect="fade" hideEffect="drop" modal="true">
                 <h:panelGrid  columns="2">
                     <h:outputLabel for="username" value="Usuario:" />
                     <p:inputText id="username" value="#{loginBean.alumno.nroLegajo}" required="true" label="username" />
@@ -63,8 +65,8 @@
                     <p:password id="password" value="#{loginBean.alumno.password}" required="true" label="password" />
 
                     <f:facet name="footer">
-                        <p:commandButton value="Login" update=":msg" actionListener="#{loginBean.login(event)}" onclick="mostrar();"
-                                         oncomplete="handleLoginRequest(xhr, status, args)" />
+                        <p:commandButton value="Login" actionListener="#{loginBean.login(event)}" onclick="loginDialog.hide()"
+                                         oncomplete="handleLoginRequest(xhr, status, args)" ajax="true"/>
                     </f:facet>  
                 </h:panelGrid>                    
             </p:dialog>            
@@ -78,24 +80,24 @@
         
         <script type="text/javascript">
             function loginIn(){
-                    document.getElementById('cuenta').style.display = 'hidden';
-                    document.getElementById('opciones').style.display = 'hidden';
-                    document.getElementById('login').style.display = 'none';
-                    document.writeln("Ingreso al Metodo loginIn()");
+                alert("Ingreso al Metodo loginIn");                
+                document.getElementById('cuenta').style.display = 'hidden';
+                document.getElementById('opciones').style.display = 'hidden';
+                document.getElementById('login').style.display = 'none';
+                alert("Sale del Metodo loginIn");
             }
             
             function loginOut(){
-                    document.getElementById('cuenta').style.display = 'none';
-                    document.getElementById('opciones').style.display = 'none';
-                    document.getElementById('login').style.display = 'hidden';
-                    document.writeln("Ingreso al Metodo loginOut()");
+                document.getElementById('cuenta').style.display = 'none';
+                document.getElementById('opciones').style.display = 'none';
+                document.getElementById('login').style.display = 'hidden';
+                alert("Ingreso al Metodo loginOut");
             }
             
-            function handleLoginRequest(xhr, status, args) {                
+            function handleLoginRequest(xhr, status, args) {                                
                 if(args.validationFailed || !args.loggedIn) {
                     PF('#formLogin').jq.effect("shake", {times:3}, 100);
-                }
-                loginIn();                 
+                }    
             }
         </script>       
 
