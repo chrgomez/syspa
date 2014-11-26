@@ -3,7 +3,6 @@ package utn.sau.hp.com.dao;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
-import utn.sau.hp.com.modelo.Ofertas;
 import utn.sau.hp.com.modelo.Requisitoscompetencias;
 import utn.sau.hp.com.util.HibernateUtil;
 
@@ -21,7 +20,7 @@ public class RequisitosCompetenciaDao {
         try {           
             lista = s.createQuery(consulta).list();                       
         } catch (Exception e) {
-            System.out.println("Error findByOferta "+e);
+            System.out.println("Error RequisitosCompetenciaDao findByOferta "+e);
         }finally{
             s.close();
         }

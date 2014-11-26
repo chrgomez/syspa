@@ -19,10 +19,12 @@
                                  selectionMode="single"
                                  paginator="true" rows="10"                                 
                                  paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                 rowsPerPageTemplate="10,15,30">
+                                 rowsPerPageTemplate="10,15,30"
+                                 emptyMessage="No existen Ofertas de Pasantias Vigentes.">
                         <f:facet name="header" >
                             Ofertas de Pasantias Vigentes
-                        </f:facet>                        
+                        </f:facet>   
+                        <p:ajax event="rowSelect" listener="#{requisitosCompetenciaBean.onRowSelect}"  />
                         <p:column headerText="Empresa">
                             <h:outputText value="#{oferta.empresas.empresaRazonSocial}" />
                         </p:column>
@@ -51,9 +53,9 @@
                               Hasta: #{ofertaBean.ofertaSelec.ofertaVigenciaHasta}" 
                               widgetVar="detalleDialog" resizable="false" showEffect="fade" hideEffect="clip" modal="true">                                                
                         
-                        <p:dataTable id="competenciasTable" var="com" value="#{requisitosCompetenciaBean.listaRequisitosCompetencia}" 
+                    <p:dataTable id="competenciasTable" var="com" value="#{requisitosCompetenciaBean.listaRequisitosCompetencia}" 
                                  rowKey="#{com.id}"
-                                 >
+                                 emptyMessage="Oferta sin Requisitos de Competencias">
                         <f:facet name="header" >
                             Competencias Requeridas
                         </f:facet>                        
@@ -64,6 +66,25 @@
                             <h:outputText value="#{com.competencias.areas.areaDescripcion}" />
                         </p:column>                       
                     </p:dataTable>
+                        <p:dataTable id="materiasTable" var="mat" value="#{requisitosMateriaBean.listaRequisitosMateria}" 
+                                 rowKey="#{mat.id}"
+                                 emptyMessage="Oferta sin Requisitos de Materias">
+                        <f:facet name="header" >
+                            Competencias Requeridas
+                        </f:facet>                        
+                        <p:column headerText="Materia">
+                            <h:outputText value="#{mat.materias.materia}" />
+                        </p:column>
+                        <p:column headerText="Condición">
+                            <h:outputText value="#{mat.requisitoMateriaCondicion}" />
+                        </p:column>  
+                        <p:column headerText="Carrera">
+                            <h:outputText value="#{mat.ofertascarreras.carreras.carrera}" />
+                        </p:column> 
+                    </p:dataTable>   
+                    <f:facet name="footer">
+                        <p:commandButton value="Postularse" ajax="true"/>
+                    </f:facet> 
                 </p:dialog>            
             </h:form>
                 

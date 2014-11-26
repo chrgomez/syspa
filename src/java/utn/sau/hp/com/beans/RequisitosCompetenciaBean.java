@@ -3,16 +3,13 @@ package utn.sau.hp.com.beans;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.el.ELContext;
-import javax.el.ExpressionFactory;
-import javax.el.ValueExpression;
-import javax.faces.application.Application;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
+import org.primefaces.event.SelectEvent;
 import utn.sau.hp.com.dao.RequisitosCompetenciaDao;
+import utn.sau.hp.com.modelo.Ofertas;
 import utn.sau.hp.com.modelo.Requisitoscompetencias;
 
 /**
@@ -30,22 +27,11 @@ public class RequisitosCompetenciaBean implements Serializable {
     public RequisitosCompetenciaBean() {
         this.dao = new RequisitosCompetenciaDao();
         this.listaRequisitosCompetencia = new ArrayList<Requisitoscompetencias>();
-        this.idOferta = "";
+        this.idOferta = "";        
     }
 
-    public List<Requisitoscompetencias> getListaRequisitosCompetencia() {  
-//        ELContext context = FacesContext.getCurrentInstance().getELContext();	
-//        Application apli = FacesContext.getCurrentInstance().getApplication();
-//        ExpressionFactory ef = apli.getExpressionFactory( );
-//        ValueExpression ve = ef.createValueExpression(context, "#{ofertaBean}",OfertaBean.class);
-//        OfertaBean bean = (OfertaBean) ve.getValue(context);             
-//        listaRequisitosCompetencia = dao.findByOferta(bean.getOfertaSelec().getId().toString());
-        
-        //Obtengo el contexto de la aplicación
-        ExternalContext contexto = FacesContext.getCurrentInstance().getExternalContext();
-        //Referencia de un bean de Session scoped
-        OfertaBean of = (OfertaBean) contexto.getSessionMap().get("ofertaBean");
-        listaRequisitosCompetencia = dao.findByOferta(of.getOfertaSelec().getId().toString());
+    public List<Requisitoscompetencias> getListaRequisitosCompetencia() {                  
+        listaRequisitosCompetencia = dao.findByOferta(idOferta);
         return listaRequisitosCompetencia;
     }
 
@@ -60,5 +46,13 @@ public class RequisitosCompetenciaBean implements Serializable {
     public void setIdOferta(String idOferta) {
         this.idOferta = idOferta;
     }
+    
+    public void onRowSelect(SelectEvent event) {
+        idOferta = ((Ofertas) event.getObject()).getId().toString(); 
+        //PARA QUE MUESTRE EL MSJ AGREGAR EN EL AJAX rowSeleted update=":formOfertas:msgs"
+        FacesMessage msg = new FacesMessage("Oferta ID ", ((Ofertas) event.getObject()).getId().toString());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+ 
     
 }

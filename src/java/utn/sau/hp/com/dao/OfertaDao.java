@@ -19,15 +19,13 @@ public class OfertaDao {
         try {           
             lista = s.createQuery(consulta).list();                       
         } catch (Exception e) {
-            System.out.println("Error findByAll "+e);
+            System.out.println("Error OfertaDao findByAll "+e);
         }finally{
             s.close();
         }
         if(lista.isEmpty()){
-                System.out.println("NO HAY OFERTAS");
                 return null;                
             }else{
-                System.out.println("LISTAR OFERTAS");
                 return lista;
             }
     }

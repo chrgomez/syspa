@@ -36,7 +36,7 @@
                        
                         <f:facet name="options">
                             <p:outputLabel style="margin-right:10px" value="#{loginBean.userLoggedIn.apellido} #{loginBean.userLoggedIn.nombre} " />
-                            <p:commandButton type="btnLogin" value="Login" icon="ui-icon-person" update="" oncomplete="loginDialog.show()" /> 
+                            <p:commandButton type="btnLogin" value="Login" icon="ui-icon-person" oncomplete="loginDialog.show()" /> 
                             <p:menuButton id="opciones" value="Opciones"  style='display:hidden;'>                                
                                 <p:menuitem value="Postulaciones" actionListener="#{menuView.save}" icon="ui-icon-disk"/>
                                 <p:menuitem value="Pasantías en curso" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w"/>
@@ -65,7 +65,7 @@
                     <p:password id="password" value="#{loginBean.alumno.password}" required="true" label="password" />
 
                     <f:facet name="footer">
-                        <p:commandButton value="Login" actionListener="#{loginBean.login(event)}" onclick="loginDialog.hide()"
+                        <p:commandButton value="Login" update=":formMenu" actionListener="#{loginBean.login(event)}" onclick="loginDialog.hide()"
                                          oncomplete="handleLoginRequest(xhr, status, args)" ajax="true"/>
                     </f:facet>  
                 </h:panelGrid>                    
