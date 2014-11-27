@@ -11,4 +11,20 @@
             <redirect>1</redirect>
         </navigation-case>
     </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/*</from-view-id>
+        <navigation-case>
+            <from-outcome>datospersonales</from-outcome>
+            <to-view-id>/datospersonales/datospersonales.xhtml</to-view-id>
+            <redirect>1</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/*</from-view-id>
+        <navigation-case>
+            <from-outcome>reglamentacion</from-outcome>
+            <to-view-id>/reglamentacion/reglamentacion.xhtml</to-view-id>
+            <redirect>1</redirect>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

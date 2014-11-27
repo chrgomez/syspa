@@ -32,7 +32,7 @@
                 <h:form id="formMenu">                                          
                     <p:menubar >                                                                      
                         <p:menuitem value="Ofertas" icon="ui-icon-document" action="ofertas" ajax="false"/>
-                        <p:menuitem value="Reglamentación" icon="ui-icon-contact" />
+                        <p:menuitem value="Reglamentación" action="reglamentacion" icon="ui-icon-contact" />
                        
                         <f:facet name="options">
                             <p:outputLabel style="margin-right:10px" value="#{loginBean.userLoggedIn.apellido} #{loginBean.userLoggedIn.nombre} " />
@@ -43,8 +43,9 @@
                                 <p:menuitem value="Pasantías finalizadas" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w"/>
                             </p:menuButton>
                             <p:menuButton id="cuenta" value="Mi Cuenta"  style='display:hidden;' >
-                                <p:menuitem value="Datos personales" actionListener="#{menuView.save}" icon="ui-icon-disk"/>
+                                <p:menuitem value="Datos personales" action="datospersonales" icon="ui-icon-disk"/>
                                 <p:menuitem value="Suscripción" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w"/>
+                                <p:menuitem value="Cambiar contraseña" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w"/>
                                 <p:separator />
                                 <p:menuitem value="Salir" url="http://www.primefaces.org" icon="ui-icon-extlink"/>
                             </p:menuButton>
