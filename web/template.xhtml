@@ -39,7 +39,7 @@
                             <p:commandButton type="btnLogin" value="Login" icon="ui-icon-person" oncomplete="loginDialog.show()" /> 
                             <p:menuButton id="opciones" value="Opciones"  style='display:hidden;'>                                
                                 <p:menuitem value="Postulaciones" actionListener="#{menuView.save}" icon="ui-icon-disk"/>
-                                <p:menuitem value="Pasantías en curso" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w"/>
+                                <p:menuitem value="Pasantías en curso" action="pasantiasencurso" icon="ui-icon-arrowrefresh-1-w"/>
                                 <p:menuitem value="Pasantías finalizadas" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w"/>
                             </p:menuButton>
                             <p:menuButton id="cuenta" value="Mi Cuenta"  style='display:hidden;' >

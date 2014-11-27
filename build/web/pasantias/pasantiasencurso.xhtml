@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../template.xhtml">
+
+            <ui:define name="content">
+                <h:form id="formConvenios" >
+                    <p:growl id="msgs" showDetail="true" />
+                    
+                    <p:dataTable id="convenioTable" var="convenio" value="#{convenioParticularBean.listaConvenios}" rowKey="#{convenio.id}"
+                                 paginator="true" rows="10"                                 
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="10,15,30"
+                                 emptyMessage="No existen Pasantias Vigentes.">
+                        <f:facet name="header" >
+                            Pasantías en curso
+                        </f:facet>   
+                    
+                        <p:column headerText="Hasta">
+                            <h:outputText value="#{convenio.fechaFin}" >
+                                <f:convertDateTime type="date" dateStyle="medium" timeZone="GMT-3"/>
+                        </h:outputText>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+                
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

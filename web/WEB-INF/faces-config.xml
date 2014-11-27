@@ -27,4 +27,12 @@
             <redirect>1</redirect>
         </navigation-case>
     </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/*</from-view-id>
+        <navigation-case>
+            <from-outcome>pasantiasencurso</from-outcome>
+            <to-view-id>/pasantias/pasantiasencurso.xhtml</to-view-id>
+            <redirect>1</redirect>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>
