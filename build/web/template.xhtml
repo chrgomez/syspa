@@ -36,7 +36,7 @@
                        
                         <f:facet name="options">
                             <p:outputLabel style="margin-right:10px" value="#{loginBean.userLoggedIn.apellido} #{loginBean.userLoggedIn.nombre} " />
-                            <p:commandButton type="btnLogin" value="Login" icon="ui-icon-person" oncomplete="loginDialog.show()" /> 
+                            <p:commandButton type="btnLogin" value="Ingresar" icon="ui-icon-person" oncomplete="loginDialog.show()" /> 
                             <p:menuButton id="opciones" value="Opciones"  style='display:hidden;'>                                
                                 <p:menuitem value="Postulaciones" actionListener="#{menuView.save}" icon="ui-icon-disk"/>
                                 <p:menuitem value="Pasantías en curso" action="pasantiasencurso" icon="ui-icon-arrowrefresh-1-w"/>
@@ -47,7 +47,7 @@
                                 <p:menuitem value="Suscripción" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w"/>
                                 <p:menuitem value="Cambiar contraseña" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w"/>
                                 <p:separator />
-                                <p:menuitem value="Salir" url="http://www.primefaces.org" icon="ui-icon-extlink"/>
+                                <p:menuitem value="Salir" update=":formMenu" actionListener="#{loginBean.logout}" icon="ui-icon-extlink"/>
                             </p:menuButton>
                         </f:facet>     
                             
@@ -62,11 +62,11 @@
                     <h:outputLabel for="username" value="Usuario:" />
                     <p:inputText id="username" value="#{loginBean.alumno.nroLegajo}" required="true" label="username" />
 
-                    <h:outputLabel for="password" value="Password:" />
+                    <h:outputLabel for="password" value="Clave" />
                     <p:password id="password" value="#{loginBean.alumno.password}" required="true" label="password" />
 
                     <f:facet name="footer">
-                        <p:commandButton value="Login" update=":formMenu" actionListener="#{loginBean.login(event)}" onclick="loginDialog.hide()"
+                        <p:commandButton value="Ingresar" update=":formMenu" actionListener="#{loginBean.login(event)}" onclick="loginDialog.hide()"
                                          oncomplete="handleLoginRequest(xhr, status, args)" ajax="true"/>
                     </f:facet>  
                 </h:panelGrid>                    

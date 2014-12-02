@@ -8,8 +8,8 @@ package utn.sau.hp.com.beans;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.inject.Named;
 import utn.sau.hp.com.dao.ConvenioparticularDao;
 import utn.sau.hp.com.modelo.Conveniosparticulares;
 
@@ -17,7 +17,7 @@ import utn.sau.hp.com.modelo.Conveniosparticulares;
  *
  * @author Cecilia
  */
-@ManagedBean
+@Named (value = "convenioParticularBean")
 @SessionScoped
 public class ConvenioParticularBean {
 

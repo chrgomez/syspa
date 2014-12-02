@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.logging.Logger;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.inject.Named;
 import org.primefaces.context.RequestContext;
 import utn.sau.hp.com.dao.AlumnoDao;
 import utn.sau.hp.com.modelo.Alumnos;
@@ -16,7 +16,7 @@ import utn.sau.hp.com.util.Routing;
  *
  * @author christian
  */
-@ManagedBean(name = "loginBean")
+@Named(value = "loginBean")
 @SessionScoped
 public class LoginBean implements Serializable{
 
@@ -40,6 +40,13 @@ public class LoginBean implements Serializable{
         this.alumno = alumno;
     }
    
+    public String logout() {
+        this.alumno = new Alumnos();
+        this.alumno.setApellido("ANONIMO");
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "index?faces-redirect=true";
+    }
+    
     public void login(ActionEvent event) {
         RequestContext context = RequestContext.getCurrentInstance();
         FacesMessage messages;

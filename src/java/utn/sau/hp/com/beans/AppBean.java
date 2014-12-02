@@ -1,14 +1,14 @@
 package utn.sau.hp.com.beans;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
+import javax.inject.Named;
 import utn.sau.hp.com.util.Routing;
 
 /**
  *
  * @author christian
  */
-@ManagedBean(name = "appBean")
+@Named(value = "appBean")
 @ApplicationScoped
 public class AppBean {
 

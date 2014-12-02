@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 import org.primefaces.event.SelectEvent;
 import utn.sau.hp.com.dao.RequisitosCompetenciaDao;
 import utn.sau.hp.com.modelo.Ofertas;
@@ -16,7 +16,7 @@ import utn.sau.hp.com.modelo.Requisitoscompetencias;
  *
  * @author christian
  */
-@ManagedBean(name = "requisitosCompetenciaBean")
+@Named(value = "requisitosCompetenciaBean")
 @SessionScoped
 public class RequisitosCompetenciaBean implements Serializable {
     
