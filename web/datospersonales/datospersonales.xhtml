@@ -6,7 +6,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core">
 
-    <body>
+    <h:body>
 
         <ui:composition template="./../template.xhtml">
 
@@ -38,8 +38,9 @@
         <p:inputText id="direccion" value="#{loginBean.getAlumno().direccion}" />
         <p:outputLabel for="telefono" value="Teléfono" />
         <p:inputText id="telefono" value="#{loginBean.getAlumno().telefono}" />
-        <p:commandButton value="Actualizar" >
-        </p:commandButton>
+
+        <p:commandButton id="btnActualizarAlumno" value="Actualizar" action="#{alumnoBean.doActualizarAlumno}"/>
+
     </h:panelGrid>
 </p:tab>  
 <p:tab title="Curriculum Vitae">
@@ -60,5 +61,5 @@
 
         </ui:composition>
 
-    </body>
+    </h:body>
 </html>

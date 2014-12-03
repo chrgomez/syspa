@@ -1,6 +1,8 @@
 package utn.sau.hp.com.dao;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import utn.sau.hp.com.modelo.Alumnos;
 import utn.sau.hp.com.util.HibernateUtil;
 
@@ -39,5 +41,17 @@ public class AlumnoDao {
         }        
         return alumno;
     }
-    
+    public void actualizarAlumno(Alumnos a) {
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        try{  
+            Transaction tx = s.beginTransaction();
+            s.save(a);
+            tx.commit();
+            System.out.println("Alumno Actualizado ");
+        }catch(HibernateException he){
+            System.out.println("Error AlumnoDao ActualizarAlumno " +he);
+        }finally{
+            s.close();
+        }
+    }
 }

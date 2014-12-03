@@ -14,18 +14,23 @@
                 <h:form id="formConvenios" >
                     <p:growl id="msgs" showDetail="true" />
                     
-                    <p:dataTable id="convenioTable" var="convenio" value="#{convenioParticularBean.listaConvenios}" rowKey="#{convenio.id}"
-                                 paginator="true" rows="10"                                 
-                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                 rowsPerPageTemplate="10,15,30"
-                                 emptyMessage="No existen Pasantias Vigentes.">
+                    <p:dataTable id="convenioTable" var="convenio" value="#{convenioBean.listaConvenios}" rowKey="#{convenio.id}"
+                                emptyMessage="No existen Pasantias Vigentes.">
                         <f:facet name="header" >
                             Pasantías en curso
                         </f:facet>   
-                    
+                        <p:column headerText="Desde">
+                            <h:outputText value="#{convenio.fechaInicio}" >
+                                <f:convertDateTime type="date" dateStyle="medium" timeZone="GMT-3"/>
+                        </h:outputText>
+                        </p:column>
                         <p:column headerText="Hasta">
                             <h:outputText value="#{convenio.fechaFin}" >
                                 <f:convertDateTime type="date" dateStyle="medium" timeZone="GMT-3"/>
+                        </h:outputText>
+                        </p:column>
+                        <p:column headerText="Empresa">
+                            <h:outputText value="#{convenio.empresas.empresaRazonSocial}" >  
                         </h:outputText>
                         </p:column>
                     </p:dataTable>

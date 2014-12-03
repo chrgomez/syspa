@@ -16,14 +16,14 @@ import utn.sau.hp.com.util.HibernateUtil;
  *
  * @author Cecilia
  */
-public class ConvenioparticularDao {
+public class ConvenioDao {
     
     
        public List<Conveniosparticulares> findByAlumno(String id){
         List<Conveniosparticulares> lista = new ArrayList();
         Session s = HibernateUtil.getSessionFactory().openSession();
-        String consulta = "FROM Conveniosparticulares c left join fetch c.alumnos a "
-                + "WHERE a.id ="+id;
+        String consulta = "FROM Conveniosparticulares c left join fetch c.alumnos a left join fetch c.empresas e "
+                + "WHERE a.id ="+id; 
         try {           
             lista = s.createQuery(consulta).list();                       
         } catch (Exception e) {
