@@ -53,8 +53,30 @@ public class OfertaDao {
                 for (int i = 0; i < lista.size(); i++) {
                     carreras += lista.get(i).getCarrera()+" - " ;                                    
                 }
-//                System.out.println("CARRERAS: "+carreras.substring(0, carreras.length()-3));
+                System.out.println("CARRERAS: "+carreras.substring(0, carreras.length()-3));
                 return carreras.substring(0, carreras.length()-3);
+            }
+    }
+    
+    public List<Ofertas> findByIdCarrera(String id){
+        List<Ofertas> lista = new ArrayList();
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        String consulta = "SELECT o " +
+            "FROM  Ofertascarreras oc " +
+            "INNER JOIN oc.ofertas o " +
+            "INNER JOIN oc.carreras c " +
+            "WHERE c.id = "+id;
+        try {           
+            lista = s.createQuery(consulta).list();                       
+        } catch (Exception e) {
+            System.out.println("Error OfertaDao findByIdCarrera "+e);
+        }finally{
+            s.close();
+        }
+        if(lista.isEmpty()){
+                return null;                
+            }else{
+                return lista;
             }
     }
     

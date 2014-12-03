@@ -6,17 +6,18 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core">
 
-    <body>
+    <h:body>        
 
         <ui:composition template="./../template.xhtml">
 
             <ui:define name="content">
                 <h:form id="formOfertas" >
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
                     <p:growl id="msgs" showDetail="true" />
                     <p:panel header="Filtrar Ofertas Vigentes">
-                        <h:panelGrid columns="6">
+                        <h:panelGrid columns="5">
                                 <p:outputLabel value="Carrera: "/>
-                                <p:selectOneMenu value="" style="width: 250px;">
+                                <p:selectOneMenu style="width: 250px;">
                                     <f:selectItem itemLabel="" itemValue="#{ofertaBean.carreraFilter}" />
                                     <f:selectItems value="#{carreraBean.selectOneItemCarrera}" />
                                 </p:selectOneMenu>
@@ -25,7 +26,8 @@
                                     <f:selectItem itemLabel="" itemValue="#{ofertaBean.competenciaFilter}" />
                                     <f:selectItems value="#{competenciaBean.selectOneItemCompetencia}" />
                                 </p:selectOneMenu>
-                                <p:commandButton actionListener="#{ofertaBean}" style="margin-right:10px" id="filtrarCompetencia" value="Filtrar" update="ofertasTable" icon="ui-icon-search"/>
+                                
+                                <p:commandButton actionListener="#{ofertaBean.doFiltrarByCarrera()}" style="margin-right:10px" id="filtrarCompetencia" value="Filtrar" icon="ui-icon-search"/>
                         </h:panelGrid>
 
                         <p:dataTable id="ofertasTable" var="oferta" value="#{ofertaBean.listaOfertas}" rowKey="#{oferta.id}"
@@ -103,7 +105,7 @@
                         </p:column> 
                     </p:dataTable>   
                     <f:facet name="footer">
-                        <p:commandButton id="btnPostularse" value="Postularse" actionListener="#{postulacionBean.doNuevaPostulacion}"/>
+                        <p:commandButton id="btnPostularse" value="Postularse" actionListener="#{postulacionBean.doNuevaPostulacion}" onclick="detalleDialog.hide()"/>
                     </f:facet> 
                 </p:dialog>            
             </h:form>
@@ -112,5 +114,5 @@
 
         </ui:composition>
 
-    </body>
+    </h:body>
 </html>

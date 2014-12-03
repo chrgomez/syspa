@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.event.ActionEvent;
+import javax.inject.Inject;
 import javax.inject.Named;
 import utn.sau.hp.com.dao.OfertaDao;
 import utn.sau.hp.com.modelo.Ofertas;
@@ -12,6 +15,7 @@ import utn.sau.hp.com.modelo.Ofertas;
  *
  * @author christian
  */
+@ManagedBean
 @Named(value = "ofertaBean")
 @SessionScoped
 public class OfertaBean implements Serializable {
@@ -21,6 +25,8 @@ public class OfertaBean implements Serializable {
     private OfertaDao dao;
     private String carreraFilter;
     private String competenciaFilter;
+    @Inject
+    private LoginBean alumno;
     
     public OfertaBean() {
         this.dao = new OfertaDao();
@@ -39,6 +45,7 @@ public class OfertaBean implements Serializable {
     }
 
     public List<Ofertas> getListaOfertas() {
+//        System.out.println("ENTRO ACA: "+alumno.getUserLoggedIn().getApellido());
         listaOfertas = dao.findByAll();
 //        for (int i = 0; i < listaOfertas.size(); i++) {
 //            System.out.println("OFERTA ID: "+listaOfertas.get(i).getId());
@@ -71,8 +78,14 @@ public class OfertaBean implements Serializable {
         this.competenciaFilter = competenciaFilter;
     }
     
-    public void doFiltrarOfertas(){
-        
+    public void doFiltrarByCarrera(){
+        System.out.println("doFiltrarOfertasByCarrera "+carreraFilter);
+//        listaOfertas.clear();
+//        listaOfertas.addAll(dao.findByIdCarrera("1"));
+//        for (int i = 0; i < listaOfertas.size(); i++) {
+//            System.out.println("OFERTA ID: "+listaOfertas.get(i).getId());
+//            dao.findByCarrerasIdOferta(listaOfertas.get(i).getId().toString());
+//        }
     }
     
 }
