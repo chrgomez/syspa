@@ -53,7 +53,7 @@ public class OfertaDao {
                 for (int i = 0; i < lista.size(); i++) {
                     carreras += lista.get(i).getCarrera()+" - " ;                                    
                 }
-                System.out.println("CARRERAS: "+carreras.substring(0, carreras.length()-3));
+//                System.out.println("CARRERAS: "+carreras.substring(0, carreras.length()-3));
                 return carreras.substring(0, carreras.length()-3);
             }
     }
@@ -64,7 +64,7 @@ public class OfertaDao {
         String consulta = "SELECT o " +
             "FROM  Ofertascarreras oc " +
             "INNER JOIN oc.ofertas o " +
-            "INNER JOIN oc.carreras c " +
+            "INNER JOIN oc.carreras c left join fetch o.empresas " +
             "WHERE c.id = "+id;
         try {           
             lista = s.createQuery(consulta).list();                       
@@ -76,6 +76,30 @@ public class OfertaDao {
         if(lista.isEmpty()){
                 return null;                
             }else{
+                return lista;
+            }
+    }
+    
+    public List<Ofertas> findByIdCompetencia(String id){
+        List<Ofertas> lista = new ArrayList();
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        String consulta = "SELECT o " +
+            "FROM Requisitoscompetencias rc " +
+            "INNER JOIN rc.ofertas o " +
+            "INNER JOIN rc.competencias c left join fetch o.empresas " +
+            "WHERE c.id = "+id;
+        try {           
+            lista = s.createQuery(consulta).list();                       
+        } catch (Exception e) {
+            System.out.println("Error OfertaDao findByIdCompetencia "+e);
+        }finally{
+            s.close();
+        }
+        if(lista.isEmpty()){
+                System.out.println("findByIdCompetencia lista null o vacia");
+                return null;                
+            }else{
+                System.out.println("findByIdCompetencia size "+lista.size());
                 return lista;
             }
     }

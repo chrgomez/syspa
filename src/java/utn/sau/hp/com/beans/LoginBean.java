@@ -42,6 +42,9 @@ public class LoginBean implements Serializable{
    
     public String logout() {
         this.alumno = new Alumnos();
+        FacesMessage messages;        
+        messages = new FacesMessage(FacesMessage.SEVERITY_INFO, "Gracias por su visita.", "");
+        FacesContext.getCurrentInstance().addMessage(null, messages);
         this.alumno.setApellido("ANONIMO");
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "index?faces-redirect=true";
@@ -58,14 +61,15 @@ public class LoginBean implements Serializable{
         if(this.alumno != null) {
             loggedIn = true;
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", this.alumno.getNroLegajo());
-            messages = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido", this.alumno.getApellido()+", "+this.alumno.getNombre());
+            messages = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido:", this.alumno.getApellido()+", "+this.alumno.getNombre());
             ruta += Routing.baseurl()+"inicio.xhtml";  
             getUserLoggedIn();
         } else {
             loggedIn = false;
-            messages = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Error", "Credenciales Incorrectas");
+            messages = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Error", "Credenciales Incorrectas");            
             if(this.alumno == null){
                 this.alumno = new Alumnos();
+                this.alumno.setApellido("ANONIMO");
             }
         }
          

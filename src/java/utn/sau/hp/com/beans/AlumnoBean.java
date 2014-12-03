@@ -1,17 +1,13 @@
 package utn.sau.hp.com.beans;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import utn.sau.hp.com.dao.AlumnoDao;
-import utn.sau.hp.com.dao.OfertaDao;
 import utn.sau.hp.com.modelo.Alumnos;
-import utn.sau.hp.com.modelo.Ofertas;
 
 /**
  *
@@ -42,14 +38,11 @@ public class AlumnoBean implements Serializable {
     public void doActualizarAlumno(){
         FacesMessage messages;
         if(login.getUserLoggedIn().getApellido().equals("ANONIMO")){
-            messages = new FacesMessage(FacesMessage.SEVERITY_INFO, "Advertencia" ,"Usuario no registrado.");
+            messages = new FacesMessage(FacesMessage.SEVERITY_INFO, "Advertencia:" ,"Usuario no registrado.");
             System.out.println("Usuario no registrado.");
         }else{
-            messages = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notificación" ,"Datos actualizados exitosamente.");
-            alumno = new Alumnos();
+            messages = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notificación:" ,"Datos actualizados exitosamente.");
             alumno = login.getUserLoggedIn();
-            System.out.println(""+alumno.toString());
-            alumno.setTelefono("45");
             dao.actualizarAlumno(alumno);
         }
         FacesContext.getCurrentInstance().addMessage(null, messages);        

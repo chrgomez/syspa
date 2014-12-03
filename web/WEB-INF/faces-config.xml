@@ -15,7 +15,7 @@
         <from-view-id>/*</from-view-id>
         <navigation-case>
             <from-outcome>datospersonales</from-outcome>
-            <to-view-id>/datospersonales/datospersonales.xhtml</to-view-id>
+            <to-view-id>/datospersonales/datos_personales.xhtml</to-view-id>
             <redirect>1</redirect>
         </navigation-case>
     </navigation-rule>

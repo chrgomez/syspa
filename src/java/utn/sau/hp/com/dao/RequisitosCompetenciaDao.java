@@ -12,12 +12,13 @@ import utn.sau.hp.com.util.HibernateUtil;
  */
 public class RequisitosCompetenciaDao {
     
-    public List<Requisitoscompetencias> findByOferta( String idOferta){
+    public List<Requisitoscompetencias> findByOferta(String idOferta){
         List<Requisitoscompetencias> lista = new ArrayList();
         Session s = HibernateUtil.getSessionFactory().openSession();
-        String consulta = "FROM Requisitoscompetencias r left join fetch r.competencias c left join fetch c.areas"
+        String consulta = "FROM Requisitoscompetencias r left join fetch r.competencias c left join fetch c.areas "
                 + " WHERE r.ofertas.id = "+idOferta;
-        try {           
+        try {  
+//            System.out.println("Cant Requisitos Competencia OFERTA ID "+idOferta+" CANTIDAD "+lista.size());
             lista = s.createQuery(consulta).list();                       
         } catch (Exception e) {
             System.out.println("Error RequisitosCompetenciaDao findByOferta "+e);

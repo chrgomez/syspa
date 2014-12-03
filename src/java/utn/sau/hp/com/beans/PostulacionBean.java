@@ -44,14 +44,19 @@ public class PostulacionBean implements Serializable {
             messages = new FacesMessage(FacesMessage.SEVERITY_INFO, "Advertencia: " ,"Alumno no identificado.");
 //            System.out.println("Usuario no registrado.");
         }else{
-            messages = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notificación: " ,"Postulación registrada exitosamente.");
-            postulacion.setAlumnos(alumno.getUserLoggedIn());
-            postulacion.setOfertas(oferta.getOfertaSelec());
-            postulacion.setFechaPostulacion(GregorianCalendar.getInstance().getTime());
-            postulacion.setFechaSeleccion(GregorianCalendar.getInstance().getTime());
-            postulacion.setCumpleRequisitosAcademicos(Byte.MIN_VALUE);
-            dao.nuevaPostulacion(postulacion);
-//            System.out.println("Postulacion registrada.");
+            if(!dao.checkPostulacion(alumno.getUserLoggedIn(), oferta.getOfertaSelec())){
+                messages = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notificación: " ,"Postulación registrada exitosamente.");
+                postulacion.setAlumnos(alumno.getUserLoggedIn());
+                postulacion.setOfertas(oferta.getOfertaSelec());
+                postulacion.setFechaPostulacion(GregorianCalendar.getInstance().getTime());
+                postulacion.setFechaSeleccion(GregorianCalendar.getInstance().getTime());
+                postulacion.setCumpleRequisitosAcademicos(Byte.MIN_VALUE);
+                dao.nuevaPostulacion(postulacion);
+    //            System.out.println("Postulacion registrada.");
+            }else{
+                messages = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notificación: " ,
+                        alumno.getUserLoggedIn().getApellido()+", "+alumno.getUserLoggedIn().getNombre()+" ya se encuentra postulado para la oferta seleccionada.");
+            }
         }
         FacesContext.getCurrentInstance().addMessage(null, messages);        
     }

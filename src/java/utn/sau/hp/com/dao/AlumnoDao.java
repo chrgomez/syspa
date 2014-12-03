@@ -36,7 +36,6 @@ public class AlumnoDao {
             System.out.println(alumno.getApellido()+", "+alumno.getNombre());
             if(!alumno.getPassword().equals(alu.getPassword())){
                 alumno = null; 
-                System.out.println("CLAVE INCORRECTA");
             }                
         }        
         return alumno;
@@ -45,9 +44,8 @@ public class AlumnoDao {
         Session s = HibernateUtil.getSessionFactory().openSession();
         try{  
             Transaction tx = s.beginTransaction();
-            s.save(a);
+            s.merge(a);
             tx.commit();
-            System.out.println("Alumno Actualizado ");
         }catch(HibernateException he){
             System.out.println("Error AlumnoDao ActualizarAlumno " +he);
         }finally{

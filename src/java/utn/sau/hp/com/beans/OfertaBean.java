@@ -30,6 +30,8 @@ public class OfertaBean implements Serializable {
     
     public OfertaBean() {
         this.dao = new OfertaDao();
+        this.carreraFilter = "";
+        this.competenciaFilter = "";
         this.listaOfertas = new ArrayList<Ofertas>();
         if(this.ofertaSelec == null){
             this.ofertaSelec = new Ofertas();
@@ -44,13 +46,24 @@ public class OfertaBean implements Serializable {
         this.ofertaSelec = ofertaSelec;
     }
 
-    public List<Ofertas> getListaOfertas() {
-//        System.out.println("ENTRO ACA: "+alumno.getUserLoggedIn().getApellido());
-        listaOfertas = dao.findByAll();
-//        for (int i = 0; i < listaOfertas.size(); i++) {
-//            System.out.println("OFERTA ID: "+listaOfertas.get(i).getId());
-//            dao.findByCarrerasIdOferta(listaOfertas.get(i).getId().toString());
-//        }
+    public List<Ofertas> getListaOfertas() {      
+        listaOfertas.clear();
+        if(carreraFilter.isEmpty() & competenciaFilter.isEmpty()){
+            //NO HAY FILTROS
+            listaOfertas = dao.findByAll();
+        }else{
+            //FILTRA POR CARRERA
+            if(!carreraFilter.isEmpty() & competenciaFilter.isEmpty()){
+                listaOfertas.addAll(dao.findByIdCarrera(carreraFilter));
+            }else{
+                //FILTRA POR COMPETENCIA
+                if(carreraFilter.isEmpty() & !competenciaFilter.isEmpty()){
+                    listaOfertas.addAll(dao.findByIdCompetencia(competenciaFilter));
+                }else{
+                    //FILTRA POR CARRERA Y POR COMPETENCIA
+                }
+            }
+        }
         return listaOfertas;
     }
 
@@ -78,14 +91,8 @@ public class OfertaBean implements Serializable {
         this.competenciaFilter = competenciaFilter;
     }
     
-    public void doFiltrarByCarrera(){
-        System.out.println("doFiltrarOfertasByCarrera "+carreraFilter);
-//        listaOfertas.clear();
-//        listaOfertas.addAll(dao.findByIdCarrera("1"));
-//        for (int i = 0; i < listaOfertas.size(); i++) {
-//            System.out.println("OFERTA ID: "+listaOfertas.get(i).getId());
-//            dao.findByCarrerasIdOferta(listaOfertas.get(i).getId().toString());
-//        }
+    public void doFiltrar(String id){
+        getListaOfertas();
     }
     
 }
