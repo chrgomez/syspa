@@ -45,7 +45,7 @@
                             <p:menuButton id="cuenta" value="Mi Cuenta"  style='display:hidden;' >
                                 <p:menuitem value="Datos personales" action="datospersonales" icon="ui-icon-disk"/>
                                 <p:menuitem value="Suscripción" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w"/>
-                                <p:menuitem value="Cambiar contraseña" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w"/>
+                                <p:menuitem value="Cambiar contraseña" icon="ui-icon-arrowrefresh-1-w" oncomplete="claveDialog.show()"/>
                                 <p:separator />
                                 <p:menuitem value="Salir" update=":formMenu" actionListener="#{loginBean.logout}" icon="ui-icon-extlink"/>
                             </p:menuButton>
@@ -63,11 +63,50 @@
                     <p:inputText id="username" value="#{loginBean.alumno.nroLegajo}" required="true" label="username" />
 
                     <h:outputLabel for="password" value="Clave" />
-                    <p:password id="password" value="#{loginBean.alumno.password}" required="true" label="password" />
+                    <p:password id="password" value="#{loginBean.alumno.password}" required="true" label="password" 
+                                feedback="true" inline="true" 
+                                promptLabel="Por favor, ingrese su contraseña"
+                                weakLabel="Débil" goodLabel="Bueno" strongLabel="Fuerte"
+                                 />
 
                     <f:facet name="footer">
                         <p:commandButton value="Ingresar" update=":formMenu" actionListener="#{loginBean.login(event)}" onclick="loginDialog.hide()"
                                          oncomplete="handleLoginRequest(xhr, status, args)" ajax="true"/>
+                    </f:facet>  
+                </h:panelGrid>                    
+            </p:dialog>            
+        </h:form>
+        
+        <h:form id="formClave">     
+            <p:dialog id="claveDlg" header="Cambiar Contraseña" widgetVar="claveDialog" resizable="false" showEffect="fade" hideEffect="explode" modal="true">
+                <h:panelGrid  columns="2">
+                    <h:outputLabel for="username" value="Usuario:" />
+                    <p:inputText id="username" value="#{loginBean.alumno.nroLegajo}" required="true" label="username" />
+
+                    <h:outputLabel for="password" value="Clave Actual:" />
+                    <p:password id="password2" value="#{loginBean.alumno.password}" required="true" label="password" 
+                                feedback="true" inline="true" 
+                                promptLabel="Por favor, ingrese su contraseña"
+                                weakLabel="Débil" goodLabel="Bueno" strongLabel="Fuerte"
+                                />
+                    
+                    <h:outputLabel for="password" value="Clave Nueva:" />
+                    <p:password id="password3" value="#{loginBean.alumno.password}" required="true" label="password" 
+                                feedback="true" inline="true" 
+                                promptLabel="Por favor, ingrese una contraseña"
+                                weakLabel="Débil" goodLabel="Bueno" strongLabel="Fuerte"
+                                />
+                    
+                    <h:outputLabel for="password" value="Confirmar:" />
+                    <p:password id="password4" value="#{loginBean.alumno.password}" required="true" label="password" 
+                                feedback="true" inline="true" 
+                                promptLabel="Por favor, repita su contraseña nueva"
+                                weakLabel="Débil" goodLabel="Bueno" strongLabel="Fuerte"
+                                />
+
+                    <f:facet name="footer">
+                        <p:commandButton value="Cambiar" actionListener="#{alumnoBean.doActualizarAlumno()}" onclick="claveDialog.hide()"
+                                         />
                     </f:facet>  
                 </h:panelGrid>                    
             </p:dialog>            
