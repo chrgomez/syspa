@@ -12,11 +12,10 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/christian/NetBeansProjects/syspa/src/java/utn/sau/hp/com/dao/OfertaDao.java</file>
-            <file>file:/home/christian/NetBeansProjects/syspa/src/java/utn/sau/hp/com/beans/PostulacionBean.java</file>
-            <file>file:/home/christian/NetBeansProjects/syspa/src/java/utn/sau/hp/com/beans/LoginBean.java</file>
+            <file>file:/home/christian/NetBeansProjects/syspa/src/java/utn/sau/hp/com/dao/RequisitosMateriaDao.java</file>
+            <file>file:/home/christian/NetBeansProjects/syspa/src/java/utn/sau/hp/com/beans/RequisitoCompetenciaBean.java</file>
             <file>file:/home/christian/NetBeansProjects/syspa/web/ofertas/pasantias_vigentes.xhtml</file>
-            <file>file:/home/christian/NetBeansProjects/syspa/src/java/utn/sau/hp/com/beans/OfertaBean.java</file>
+            <file>file:/home/christian/NetBeansProjects/syspa/src/java/utn/sau/hp/com/beans/RequisitoMateriaBean.java</file>
         </group>
     </open-files>
 </project-private>

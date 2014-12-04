@@ -22,4 +22,13 @@ public class CarreraDao {
         }
     }
     
+    public Carreras findById(Integer id){
+        Session s = HibernateUtil.getSessionFactory().openSession();        
+        try{            
+            return (Carreras) s.get(Carreras.class, id);
+        }catch(Exception e){
+            return null;
+        }
+    }
+    
 }

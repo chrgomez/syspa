@@ -11,8 +11,7 @@
         <ui:composition template="./../template.xhtml">
 
             <ui:define name="content">
-                <h:form id="formOfertas" >
-                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                <h:form id="formOfertas" >                    
                     <p:growl id="msgs" showDetail="true" />
                     <p:panel header="Filtrar Ofertas Vigentes">
                         <h:panelGrid columns="5">
@@ -87,7 +86,7 @@
                             <h:outputText value="#{com.competencias.areas.areaDescripcion}" />
                         </p:column>                       
                     </p:dataTable>
-                        <p:dataTable id="materiasTable" var="mat" value="#{requisitosMateriaBean.listaRequisitosMateria}" 
+                        <p:dataTable id="materiasTable" var="mat" value="#{requisitoMateriaBean.listaRequisitosMateria}" 
                                  rowKey="#{mat.id}"
                                  emptyMessage="Oferta sin Requisitos de Materias">
                         <f:facet name="header" >
@@ -100,7 +99,7 @@
                             <h:outputText value="#{mat.requisitoMateriaCondicion}" />
                         </p:column>  
                         <p:column headerText="Carrera">
-                            <h:outputText value="#{mat.ofertascarreras.carreras.carrera}" />
+                            <h:outputText value="#{mat.materias.carreraId}" />
                         </p:column> 
                     </p:dataTable>   
                     <f:facet name="footer">

@@ -28,6 +28,7 @@ public class RequisitosCompetenciaDao {
         if(lista.isEmpty()){
                 return null;                
             }else{
+                System.out.println("cant competencias requeridas: "+lista.size());
                 return lista;
             }
     }
