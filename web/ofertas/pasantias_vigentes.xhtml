@@ -16,13 +16,13 @@
                     <p:panel header="Filtrar Ofertas Vigentes">
                         <h:panelGrid columns="5">
                                 <p:outputLabel value="Carrera: "/>                                
-                                <p:selectOneMenu value="#{ofertaBean.carreraFilter}" style="width: 100px;">
+                                <p:selectOneMenu value="#{ofertaBean.carreraFilter}" style="width: 400px;">
                                     <p:ajax event="valueChange" listener="#{ofertaBean.doFiltrar(ofertaBean.carreraFilter)}" update="ofertasTable"/>
                                     <f:selectItem itemLabel="" itemValue="#{ofertaBean.carreraFilter}" />
                                     <f:selectItems value="#{carreraBean.selectOneItemCarrera}" />
                                 </p:selectOneMenu>
                                 <p:outputLabel value="Competencia: "/>
-                                <p:selectOneMenu value="#{ofertaBean.competenciaFilter}" filter="true" style="width: 250px;">
+                                <p:selectOneMenu value="#{ofertaBean.competenciaFilter}" filter="true" style="width: 510px;">
                                     <p:ajax event="valueChange" listener="#{ofertaBean.doFiltrar(ofertaBean.competenciaFilter)}" update="ofertasTable"/>
                                     <f:selectItem itemLabel="" itemValue="#{ofertaBean.competenciaFilter}" />
                                     <f:selectItems value="#{competenciaBean.selectOneItemCompetencia}" />
@@ -99,7 +99,7 @@
                             <h:outputText value="#{mat.requisitoMateriaCondicion}" />
                         </p:column>  
                         <p:column headerText="Carrera">
-                            <h:outputText value="#{mat.materias.carreraId}" />
+                            <h:outputText value="#{mat.materias.carreras.carrera}" />
                         </p:column> 
                     </p:dataTable>   
                     <f:facet name="footer">

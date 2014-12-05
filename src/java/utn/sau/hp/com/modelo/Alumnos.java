@@ -1,5 +1,5 @@
 package utn.sau.hp.com.modelo;
-// Generated 13/11/2014 15:37:16 by Hibernate Tools 3.6.0
+// Generated 04/12/2014 23:31:51 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -13,7 +13,8 @@ public class Alumnos  implements java.io.Serializable {
 
 
      private Integer id;
-     private Carreras carreras;
+     private Localidades localidades;
+     private int carreraId;
      private int nroLegajo;
      private String apellido;
      private String nombre;
@@ -22,10 +23,10 @@ public class Alumnos  implements java.io.Serializable {
      private String direccion;
      private String correoElectronico;
      private String telefono;
-     private byte suscripcion;
+     private Byte suscripcion;
      private byte[] alumnoCv;
      private String password;
-     private long cuil;
+     private Long cuil;
      private Set conveniosparticulareses = new HashSet(0);
      private Set postulacioneses = new HashSet(0);
      private Set alumnosmateriases = new HashSet(0);
@@ -34,19 +35,18 @@ public class Alumnos  implements java.io.Serializable {
     }
 
 	
-    public Alumnos(Carreras carreras, int nroLegajo, String apellido, String nombre, Date fechaNacimiento, int dni, byte suscripcion, String password, long cuil) {
-        this.carreras = carreras;
+    public Alumnos(int carreraId, int nroLegajo, String apellido, String nombre, Date fechaNacimiento, int dni, String password) {
+        this.carreraId = carreraId;
         this.nroLegajo = nroLegajo;
         this.apellido = apellido;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
         this.dni = dni;
-        this.suscripcion = suscripcion;
         this.password = password;
-        this.cuil = cuil;
     }
-    public Alumnos(Carreras carreras, int nroLegajo, String apellido, String nombre, Date fechaNacimiento, int dni, String direccion, String correoElectronico, String telefono, byte suscripcion, byte[] alumnoCv, String password, long cuil, Set conveniosparticulareses, Set postulacioneses, Set alumnosmateriases) {
-       this.carreras = carreras;
+    public Alumnos(Localidades localidades, int carreraId, int nroLegajo, String apellido, String nombre, Date fechaNacimiento, int dni, String direccion, String correoElectronico, String telefono, Byte suscripcion, byte[] alumnoCv, String password, Long cuil, Set conveniosparticulareses, Set postulacioneses, Set alumnosmateriases) {
+       this.localidades = localidades;
+       this.carreraId = carreraId;
        this.nroLegajo = nroLegajo;
        this.apellido = apellido;
        this.nombre = nombre;
@@ -71,12 +71,19 @@ public class Alumnos  implements java.io.Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-    public Carreras getCarreras() {
-        return this.carreras;
+    public Localidades getLocalidades() {
+        return this.localidades;
     }
     
-    public void setCarreras(Carreras carreras) {
-        this.carreras = carreras;
+    public void setLocalidades(Localidades localidades) {
+        this.localidades = localidades;
+    }
+    public int getCarreraId() {
+        return this.carreraId;
+    }
+    
+    public void setCarreraId(int carreraId) {
+        this.carreraId = carreraId;
     }
     public int getNroLegajo() {
         return this.nroLegajo;
@@ -134,11 +141,11 @@ public class Alumnos  implements java.io.Serializable {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    public byte getSuscripcion() {
+    public Byte getSuscripcion() {
         return this.suscripcion;
     }
     
-    public void setSuscripcion(byte suscripcion) {
+    public void setSuscripcion(Byte suscripcion) {
         this.suscripcion = suscripcion;
     }
     public byte[] getAlumnoCv() {
@@ -155,11 +162,11 @@ public class Alumnos  implements java.io.Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-    public long getCuil() {
+    public Long getCuil() {
         return this.cuil;
     }
     
-    public void setCuil(long cuil) {
+    public void setCuil(Long cuil) {
         this.cuil = cuil;
     }
     public Set getConveniosparticulareses() {

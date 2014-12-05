@@ -1,5 +1,5 @@
 package utn.sau.hp.com.modelo;
-// Generated 13/11/2014 15:37:16 by Hibernate Tools 3.6.0
+// Generated 04/12/2014 23:31:51 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -12,6 +12,7 @@ public class Adendas  implements java.io.Serializable {
 
      private Integer id;
      private Conveniosparticulares conveniosparticulares;
+     private Tutores tutores;
      private Date fechaFirmaConvenioAnterior;
      private String adendaDescripcion;
      private String adendaArchivoAdjunto;
@@ -19,7 +20,6 @@ public class Adendas  implements java.io.Serializable {
      private String nombreObraSocialAnterior;
      private int importeObraSocialAnterior;
      private int importeAsignacionEstimuloAnterior;
-     private Integer tutorIdAnterior;
      private Date fechaAltaObraSocialAnterior;
      private byte pagaAsignacionEstimuloAnterior;
      private Date fechaAltaArtanterior;
@@ -29,22 +29,20 @@ public class Adendas  implements java.io.Serializable {
     }
 
 	
-    public Adendas(Conveniosparticulares conveniosparticulares, Date fechaFirmaConvenioAnterior, String adendaDescripcion, String adendaArchivoAdjunto, String nombreArtAnterior, String nombreObraSocialAnterior, int importeObraSocialAnterior, int importeAsignacionEstimuloAnterior, Date fechaAltaObraSocialAnterior, byte pagaAsignacionEstimuloAnterior, Date fechaAltaArtanterior, int importeArtanterior) {
+    public Adendas(Conveniosparticulares conveniosparticulares, Date fechaFirmaConvenioAnterior, String nombreArtAnterior, String nombreObraSocialAnterior, int importeObraSocialAnterior, int importeAsignacionEstimuloAnterior, Date fechaAltaObraSocialAnterior, byte pagaAsignacionEstimuloAnterior, int importeArtanterior) {
         this.conveniosparticulares = conveniosparticulares;
         this.fechaFirmaConvenioAnterior = fechaFirmaConvenioAnterior;
-        this.adendaDescripcion = adendaDescripcion;
-        this.adendaArchivoAdjunto = adendaArchivoAdjunto;
         this.nombreArtAnterior = nombreArtAnterior;
         this.nombreObraSocialAnterior = nombreObraSocialAnterior;
         this.importeObraSocialAnterior = importeObraSocialAnterior;
         this.importeAsignacionEstimuloAnterior = importeAsignacionEstimuloAnterior;
         this.fechaAltaObraSocialAnterior = fechaAltaObraSocialAnterior;
         this.pagaAsignacionEstimuloAnterior = pagaAsignacionEstimuloAnterior;
-        this.fechaAltaArtanterior = fechaAltaArtanterior;
         this.importeArtanterior = importeArtanterior;
     }
-    public Adendas(Conveniosparticulares conveniosparticulares, Date fechaFirmaConvenioAnterior, String adendaDescripcion, String adendaArchivoAdjunto, String nombreArtAnterior, String nombreObraSocialAnterior, int importeObraSocialAnterior, int importeAsignacionEstimuloAnterior, Integer tutorIdAnterior, Date fechaAltaObraSocialAnterior, byte pagaAsignacionEstimuloAnterior, Date fechaAltaArtanterior, int importeArtanterior) {
+    public Adendas(Conveniosparticulares conveniosparticulares, Tutores tutores, Date fechaFirmaConvenioAnterior, String adendaDescripcion, String adendaArchivoAdjunto, String nombreArtAnterior, String nombreObraSocialAnterior, int importeObraSocialAnterior, int importeAsignacionEstimuloAnterior, Date fechaAltaObraSocialAnterior, byte pagaAsignacionEstimuloAnterior, Date fechaAltaArtanterior, int importeArtanterior) {
        this.conveniosparticulares = conveniosparticulares;
+       this.tutores = tutores;
        this.fechaFirmaConvenioAnterior = fechaFirmaConvenioAnterior;
        this.adendaDescripcion = adendaDescripcion;
        this.adendaArchivoAdjunto = adendaArchivoAdjunto;
@@ -52,7 +50,6 @@ public class Adendas  implements java.io.Serializable {
        this.nombreObraSocialAnterior = nombreObraSocialAnterior;
        this.importeObraSocialAnterior = importeObraSocialAnterior;
        this.importeAsignacionEstimuloAnterior = importeAsignacionEstimuloAnterior;
-       this.tutorIdAnterior = tutorIdAnterior;
        this.fechaAltaObraSocialAnterior = fechaAltaObraSocialAnterior;
        this.pagaAsignacionEstimuloAnterior = pagaAsignacionEstimuloAnterior;
        this.fechaAltaArtanterior = fechaAltaArtanterior;
@@ -72,6 +69,13 @@ public class Adendas  implements java.io.Serializable {
     
     public void setConveniosparticulares(Conveniosparticulares conveniosparticulares) {
         this.conveniosparticulares = conveniosparticulares;
+    }
+    public Tutores getTutores() {
+        return this.tutores;
+    }
+    
+    public void setTutores(Tutores tutores) {
+        this.tutores = tutores;
     }
     public Date getFechaFirmaConvenioAnterior() {
         return this.fechaFirmaConvenioAnterior;
@@ -121,13 +125,6 @@ public class Adendas  implements java.io.Serializable {
     
     public void setImporteAsignacionEstimuloAnterior(int importeAsignacionEstimuloAnterior) {
         this.importeAsignacionEstimuloAnterior = importeAsignacionEstimuloAnterior;
-    }
-    public Integer getTutorIdAnterior() {
-        return this.tutorIdAnterior;
-    }
-    
-    public void setTutorIdAnterior(Integer tutorIdAnterior) {
-        this.tutorIdAnterior = tutorIdAnterior;
     }
     public Date getFechaAltaObraSocialAnterior() {
         return this.fechaAltaObraSocialAnterior;

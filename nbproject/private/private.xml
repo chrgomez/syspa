@@ -12,10 +12,9 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/christian/NetBeansProjects/syspa/src/java/utn/sau/hp/com/dao/RequisitosMateriaDao.java</file>
-            <file>file:/home/christian/NetBeansProjects/syspa/src/java/utn/sau/hp/com/beans/RequisitoCompetenciaBean.java</file>
-            <file>file:/home/christian/NetBeansProjects/syspa/web/ofertas/pasantias_vigentes.xhtml</file>
-            <file>file:/home/christian/NetBeansProjects/syspa/src/java/utn/sau/hp/com/beans/RequisitoMateriaBean.java</file>
+            <file>file:/home/christian/NetBeansProjects/syspa/src/java/utn/sau/hp/com/beans/FileUploadBean.java</file>
+            <file>file:/home/christian/NetBeansProjects/syspa/web/datospersonales/datos_personales.xhtml</file>
+            <file>file:/home/christian/NetBeansProjects/syspa/src/java/hibernate.reveng.xml</file>
         </group>
     </open-files>
 </project-private>

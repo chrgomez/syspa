@@ -1,5 +1,5 @@
 package utn.sau.hp.com.modelo;
-// Generated 13/11/2014 15:37:16 by Hibernate Tools 3.6.0
+// Generated 04/12/2014 23:31:51 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -11,8 +11,9 @@ public class Firmantes  implements java.io.Serializable {
 
 
      private Integer id;
-     private Anexos anexos;
      private Empresas empresas;
+     private Localidades localidades;
+     private int anexoId;
      private long firmanteCuil;
      private long empresaCuit;
      private String firmanteNombre;
@@ -28,17 +29,19 @@ public class Firmantes  implements java.io.Serializable {
     }
 
 	
-    public Firmantes(Anexos anexos, Empresas empresas, long firmanteCuil, long empresaCuit, String firmanteNombre, String firmanteApellido) {
-        this.anexos = anexos;
+    public Firmantes(Empresas empresas, Localidades localidades, int anexoId, long firmanteCuil, long empresaCuit, String firmanteNombre, String firmanteApellido) {
         this.empresas = empresas;
+        this.localidades = localidades;
+        this.anexoId = anexoId;
         this.firmanteCuil = firmanteCuil;
         this.empresaCuit = empresaCuit;
         this.firmanteNombre = firmanteNombre;
         this.firmanteApellido = firmanteApellido;
     }
-    public Firmantes(Anexos anexos, Empresas empresas, long firmanteCuil, long empresaCuit, String firmanteNombre, String firmanteApellido, String firmanteTelefono, String firmanteDireccion, String firmanteCorreo, String firmanteCargo, Date firmanteFechaBaja, Integer firmanteDni) {
-       this.anexos = anexos;
+    public Firmantes(Empresas empresas, Localidades localidades, int anexoId, long firmanteCuil, long empresaCuit, String firmanteNombre, String firmanteApellido, String firmanteTelefono, String firmanteDireccion, String firmanteCorreo, String firmanteCargo, Date firmanteFechaBaja, Integer firmanteDni) {
        this.empresas = empresas;
+       this.localidades = localidades;
+       this.anexoId = anexoId;
        this.firmanteCuil = firmanteCuil;
        this.empresaCuit = empresaCuit;
        this.firmanteNombre = firmanteNombre;
@@ -58,19 +61,26 @@ public class Firmantes  implements java.io.Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-    public Anexos getAnexos() {
-        return this.anexos;
-    }
-    
-    public void setAnexos(Anexos anexos) {
-        this.anexos = anexos;
-    }
     public Empresas getEmpresas() {
         return this.empresas;
     }
     
     public void setEmpresas(Empresas empresas) {
         this.empresas = empresas;
+    }
+    public Localidades getLocalidades() {
+        return this.localidades;
+    }
+    
+    public void setLocalidades(Localidades localidades) {
+        this.localidades = localidades;
+    }
+    public int getAnexoId() {
+        return this.anexoId;
+    }
+    
+    public void setAnexoId(int anexoId) {
+        this.anexoId = anexoId;
     }
     public long getFirmanteCuil() {
         return this.firmanteCuil;

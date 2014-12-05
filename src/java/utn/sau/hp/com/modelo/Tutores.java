@@ -1,5 +1,5 @@
 package utn.sau.hp.com.modelo;
-// Generated 13/11/2014 15:37:16 by Hibernate Tools 3.6.0
+// Generated 04/12/2014 23:31:51 by Hibernate Tools 3.6.0
 
 
 import java.util.HashSet;
@@ -19,6 +19,7 @@ public class Tutores  implements java.io.Serializable {
      private String apellidoNombre;
      private long cuil;
      private Set conveniosparticulareses = new HashSet(0);
+     private Set adendases = new HashSet(0);
 
     public Tutores() {
     }
@@ -29,7 +30,7 @@ public class Tutores  implements java.io.Serializable {
         this.apellidoNombre = apellidoNombre;
         this.cuil = cuil;
     }
-    public Tutores(int dni, String tutorEmail, String tutorTelefono, String tutorCargo, String apellidoNombre, long cuil, Set conveniosparticulareses) {
+    public Tutores(int dni, String tutorEmail, String tutorTelefono, String tutorCargo, String apellidoNombre, long cuil, Set conveniosparticulareses, Set adendases) {
        this.dni = dni;
        this.tutorEmail = tutorEmail;
        this.tutorTelefono = tutorTelefono;
@@ -37,6 +38,7 @@ public class Tutores  implements java.io.Serializable {
        this.apellidoNombre = apellidoNombre;
        this.cuil = cuil;
        this.conveniosparticulareses = conveniosparticulareses;
+       this.adendases = adendases;
     }
    
     public Integer getId() {
@@ -94,6 +96,13 @@ public class Tutores  implements java.io.Serializable {
     
     public void setConveniosparticulareses(Set conveniosparticulareses) {
         this.conveniosparticulareses = conveniosparticulareses;
+    }
+    public Set getAdendases() {
+        return this.adendases;
+    }
+    
+    public void setAdendases(Set adendases) {
+        this.adendases = adendases;
     }
 
 

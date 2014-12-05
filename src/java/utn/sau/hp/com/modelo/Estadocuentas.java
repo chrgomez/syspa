@@ -1,5 +1,5 @@
 package utn.sau.hp.com.modelo;
-// Generated 13/11/2014 15:37:16 by Hibernate Tools 3.6.0
+// Generated 04/12/2014 23:31:51 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -14,22 +14,19 @@ public class Estadocuentas  implements java.io.Serializable {
      private Empresas empresas;
      private Date periodo;
      private Long nroMovimiento;
-     private char tipoMovimiento;
-     private long importe;
+     private Character tipoMovimiento;
+     private Long importe;
      private Date fecha;
 
     public Estadocuentas() {
     }
 
 	
-    public Estadocuentas(Empresas empresas, Date periodo, char tipoMovimiento, long importe, Date fecha) {
+    public Estadocuentas(Empresas empresas, Date periodo) {
         this.empresas = empresas;
         this.periodo = periodo;
-        this.tipoMovimiento = tipoMovimiento;
-        this.importe = importe;
-        this.fecha = fecha;
     }
-    public Estadocuentas(Empresas empresas, Date periodo, Long nroMovimiento, char tipoMovimiento, long importe, Date fecha) {
+    public Estadocuentas(Empresas empresas, Date periodo, Long nroMovimiento, Character tipoMovimiento, Long importe, Date fecha) {
        this.empresas = empresas;
        this.periodo = periodo;
        this.nroMovimiento = nroMovimiento;
@@ -66,18 +63,18 @@ public class Estadocuentas  implements java.io.Serializable {
     public void setNroMovimiento(Long nroMovimiento) {
         this.nroMovimiento = nroMovimiento;
     }
-    public char getTipoMovimiento() {
+    public Character getTipoMovimiento() {
         return this.tipoMovimiento;
     }
     
-    public void setTipoMovimiento(char tipoMovimiento) {
+    public void setTipoMovimiento(Character tipoMovimiento) {
         this.tipoMovimiento = tipoMovimiento;
     }
-    public long getImporte() {
+    public Long getImporte() {
         return this.importe;
     }
     
-    public void setImporte(long importe) {
+    public void setImporte(Long importe) {
         this.importe = importe;
     }
     public Date getFecha() {

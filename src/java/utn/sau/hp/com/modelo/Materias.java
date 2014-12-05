@@ -1,5 +1,5 @@
 package utn.sau.hp.com.modelo;
-// Generated 13/11/2014 15:37:16 by Hibernate Tools 3.6.0
+// Generated 04/12/2014 23:31:51 by Hibernate Tools 3.6.0
 
 
 import java.util.HashSet;
@@ -12,24 +12,24 @@ public class Materias  implements java.io.Serializable {
 
 
      private Integer id;
-     private int carreraId;
+     private Carreras carreras;
      private String materia;
-     private Set requisitosmateriases = new HashSet(0);
      private Set alumnosmateriases = new HashSet(0);
+     private Set requisitosmateriases = new HashSet(0);
 
     public Materias() {
     }
 
 	
-    public Materias(int carreraId, String materia) {
-        this.carreraId = carreraId;
+    public Materias(Carreras carreras, String materia) {
+        this.carreras = carreras;
         this.materia = materia;
     }
-    public Materias(int carreraId, String materia, Set requisitosmateriases, Set alumnosmateriases) {
-       this.carreraId = carreraId;
+    public Materias(Carreras carreras, String materia, Set alumnosmateriases, Set requisitosmateriases) {
+       this.carreras = carreras;
        this.materia = materia;
-       this.requisitosmateriases = requisitosmateriases;
        this.alumnosmateriases = alumnosmateriases;
+       this.requisitosmateriases = requisitosmateriases;
     }
    
     public Integer getId() {
@@ -39,12 +39,12 @@ public class Materias  implements java.io.Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-    public int getCarreraId() {
-        return this.carreraId;
+    public Carreras getCarreras() {
+        return this.carreras;
     }
     
-    public void setCarreraId(int carreraId) {
-        this.carreraId = carreraId;
+    public void setCarreras(Carreras carreras) {
+        this.carreras = carreras;
     }
     public String getMateria() {
         return this.materia;
@@ -53,19 +53,19 @@ public class Materias  implements java.io.Serializable {
     public void setMateria(String materia) {
         this.materia = materia;
     }
-    public Set getRequisitosmateriases() {
-        return this.requisitosmateriases;
-    }
-    
-    public void setRequisitosmateriases(Set requisitosmateriases) {
-        this.requisitosmateriases = requisitosmateriases;
-    }
     public Set getAlumnosmateriases() {
         return this.alumnosmateriases;
     }
     
     public void setAlumnosmateriases(Set alumnosmateriases) {
         this.alumnosmateriases = alumnosmateriases;
+    }
+    public Set getRequisitosmateriases() {
+        return this.requisitosmateriases;
+    }
+    
+    public void setRequisitosmateriases(Set requisitosmateriases) {
+        this.requisitosmateriases = requisitosmateriases;
     }
 
 

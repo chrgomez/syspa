@@ -1,5 +1,5 @@
 package utn.sau.hp.com.modelo;
-// Generated 13/11/2014 15:37:16 by Hibernate Tools 3.6.0
+// Generated 04/12/2014 23:31:51 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -18,43 +18,40 @@ public class Conveniosparticulares  implements java.io.Serializable {
      private Alumnos alumnos;
      private Carreras carreras;
      private Ofertas ofertas;
+     private String contactoNombre;
+     private String contactoTelefono;
+     private String contactoCorreo;
      private Date fechaInicio;
      private Date fechaFin;
      private Integer importeAsignacionEstimulo;
      private String nombreArt;
-     private int importeArt;
+     private Integer importeArt;
      private String nombreObraSocial;
-     private int importeObraSocial;
+     private Integer importeObraSocial;
      private Date fechaCancelacion;
      private String motivoCancelacion;
      private String evaluacionAlumno;
      private Date fechaFirmaConvenio;
      private byte[] archivoCp;
      private Date fechaAltaObraSocial;
-     private Boolean pagaAsignacionEstumulo;
+     private Byte pagaAsignacionEstumulo;
+     private Set pagosOses = new HashSet(0);
      private Set adendases = new HashSet(0);
-     private Set pagosArtses = new HashSet(0);
      private Set tareases = new HashSet(0);
+     private Set pagosArtses = new HashSet(0);
 
     public Conveniosparticulares() {
     }
 
-	
-    public Conveniosparticulares(Tutores tutores, Empresas empresas, Alumnos alumnos, Carreras carreras, int importeArt, int importeObraSocial, String evaluacionAlumno) {
-        this.tutores = tutores;
-        this.empresas = empresas;
-        this.alumnos = alumnos;
-        this.carreras = carreras;
-        this.importeArt = importeArt;
-        this.importeObraSocial = importeObraSocial;
-        this.evaluacionAlumno = evaluacionAlumno;
-    }
-    public Conveniosparticulares(Tutores tutores, Empresas empresas, Alumnos alumnos, Carreras carreras, Ofertas ofertas, Date fechaInicio, Date fechaFin, Integer importeAsignacionEstimulo, String nombreArt, int importeArt, String nombreObraSocial, int importeObraSocial, Date fechaCancelacion, String motivoCancelacion, String evaluacionAlumno, Date fechaFirmaConvenio, byte[] archivoCp, Date fechaAltaObraSocial, Boolean pagaAsignacionEstumulo, Set adendases, Set pagosArtses, Set tareases) {
+    public Conveniosparticulares(Tutores tutores, Empresas empresas, Alumnos alumnos, Carreras carreras, Ofertas ofertas, String contactoNombre, String contactoTelefono, String contactoCorreo, Date fechaInicio, Date fechaFin, Integer importeAsignacionEstimulo, String nombreArt, Integer importeArt, String nombreObraSocial, Integer importeObraSocial, Date fechaCancelacion, String motivoCancelacion, String evaluacionAlumno, Date fechaFirmaConvenio, byte[] archivoCp, Date fechaAltaObraSocial, Byte pagaAsignacionEstumulo, Set pagosOses, Set adendases, Set tareases, Set pagosArtses) {
        this.tutores = tutores;
        this.empresas = empresas;
        this.alumnos = alumnos;
        this.carreras = carreras;
        this.ofertas = ofertas;
+       this.contactoNombre = contactoNombre;
+       this.contactoTelefono = contactoTelefono;
+       this.contactoCorreo = contactoCorreo;
        this.fechaInicio = fechaInicio;
        this.fechaFin = fechaFin;
        this.importeAsignacionEstimulo = importeAsignacionEstimulo;
@@ -69,9 +66,10 @@ public class Conveniosparticulares  implements java.io.Serializable {
        this.archivoCp = archivoCp;
        this.fechaAltaObraSocial = fechaAltaObraSocial;
        this.pagaAsignacionEstumulo = pagaAsignacionEstumulo;
+       this.pagosOses = pagosOses;
        this.adendases = adendases;
-       this.pagosArtses = pagosArtses;
        this.tareases = tareases;
+       this.pagosArtses = pagosArtses;
     }
    
     public Integer getId() {
@@ -116,6 +114,27 @@ public class Conveniosparticulares  implements java.io.Serializable {
     public void setOfertas(Ofertas ofertas) {
         this.ofertas = ofertas;
     }
+    public String getContactoNombre() {
+        return this.contactoNombre;
+    }
+    
+    public void setContactoNombre(String contactoNombre) {
+        this.contactoNombre = contactoNombre;
+    }
+    public String getContactoTelefono() {
+        return this.contactoTelefono;
+    }
+    
+    public void setContactoTelefono(String contactoTelefono) {
+        this.contactoTelefono = contactoTelefono;
+    }
+    public String getContactoCorreo() {
+        return this.contactoCorreo;
+    }
+    
+    public void setContactoCorreo(String contactoCorreo) {
+        this.contactoCorreo = contactoCorreo;
+    }
     public Date getFechaInicio() {
         return this.fechaInicio;
     }
@@ -144,11 +163,11 @@ public class Conveniosparticulares  implements java.io.Serializable {
     public void setNombreArt(String nombreArt) {
         this.nombreArt = nombreArt;
     }
-    public int getImporteArt() {
+    public Integer getImporteArt() {
         return this.importeArt;
     }
     
-    public void setImporteArt(int importeArt) {
+    public void setImporteArt(Integer importeArt) {
         this.importeArt = importeArt;
     }
     public String getNombreObraSocial() {
@@ -158,11 +177,11 @@ public class Conveniosparticulares  implements java.io.Serializable {
     public void setNombreObraSocial(String nombreObraSocial) {
         this.nombreObraSocial = nombreObraSocial;
     }
-    public int getImporteObraSocial() {
+    public Integer getImporteObraSocial() {
         return this.importeObraSocial;
     }
     
-    public void setImporteObraSocial(int importeObraSocial) {
+    public void setImporteObraSocial(Integer importeObraSocial) {
         this.importeObraSocial = importeObraSocial;
     }
     public Date getFechaCancelacion() {
@@ -207,12 +226,19 @@ public class Conveniosparticulares  implements java.io.Serializable {
     public void setFechaAltaObraSocial(Date fechaAltaObraSocial) {
         this.fechaAltaObraSocial = fechaAltaObraSocial;
     }
-    public Boolean getPagaAsignacionEstumulo() {
+    public Byte getPagaAsignacionEstumulo() {
         return this.pagaAsignacionEstumulo;
     }
     
-    public void setPagaAsignacionEstumulo(Boolean pagaAsignacionEstumulo) {
+    public void setPagaAsignacionEstumulo(Byte pagaAsignacionEstumulo) {
         this.pagaAsignacionEstumulo = pagaAsignacionEstumulo;
+    }
+    public Set getPagosOses() {
+        return this.pagosOses;
+    }
+    
+    public void setPagosOses(Set pagosOses) {
+        this.pagosOses = pagosOses;
     }
     public Set getAdendases() {
         return this.adendases;
@@ -221,19 +247,19 @@ public class Conveniosparticulares  implements java.io.Serializable {
     public void setAdendases(Set adendases) {
         this.adendases = adendases;
     }
-    public Set getPagosArtses() {
-        return this.pagosArtses;
-    }
-    
-    public void setPagosArtses(Set pagosArtses) {
-        this.pagosArtses = pagosArtses;
-    }
     public Set getTareases() {
         return this.tareases;
     }
     
     public void setTareases(Set tareases) {
         this.tareases = tareases;
+    }
+    public Set getPagosArtses() {
+        return this.pagosArtses;
+    }
+    
+    public void setPagosArtses(Set pagosArtses) {
+        this.pagosArtses = pagosArtses;
     }
 
 

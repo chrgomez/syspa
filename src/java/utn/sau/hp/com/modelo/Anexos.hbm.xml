@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 13/11/2014 15:37:18 by Hibernate Tools 3.6.0 -->
+<!-- Generated 04/12/2014 23:31:52 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="utn.sau.hp.com.modelo.Anexos" table="anexos" catalog="syspa">
         <id name="id" type="java.lang.Integer">
@@ -11,32 +11,23 @@
         <many-to-one name="empresas" class="utn.sau.hp.com.modelo.Empresas" fetch="select">
             <column name="empresa_id" not-null="true" />
         </many-to-one>
-        <property name="anexoConvenioMarco" type="string">
-            <column name="AnexoConvenioMarco" length="65535" />
-        </property>
-        <property name="empresaCuit" type="java.lang.Integer">
-            <column name="EmpresaCUIT" />
-        </property>
-        <property name="convenioFechaAnterior" type="java.lang.Byte">
-            <column name="ConvenioFechaAnterior" />
-        </property>
-        <property name="porcentajeGastoAnterior" type="java.lang.Integer">
-            <column name="PorcentajeGastoAnterior" />
+        <property name="pagaSeguroTrabajoAnterior" type="byte">
+            <column name="PagaSeguroTrabajoAnterior" not-null="true" />
         </property>
         <property name="pagaObraSocialAnterior" type="java.lang.Byte">
             <column name="PagaObraSocialAnterior" />
         </property>
-        <property name="pagaSeguroTrabajoAnterior" type="byte">
-            <column name="PagaSeguroTrabajoAnterior" not-null="true" />
+        <property name="porcentajeGastoAnterior" type="java.lang.Integer">
+            <column name="PorcentajeGastoAnterior" />
         </property>
-        <property name="pagaAsignacionEstimuloAnterior" type="boolean">
-            <column name="PagaAsignacionEstimuloAnterior" not-null="true" />
+        <property name="anexoConvenioMarco" type="string">
+            <column name="AnexoConvenioMarco" length="65535" />
         </property>
-        <set name="firmanteses" table="firmantes" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="anexo_id" not-null="true" />
-            </key>
-            <one-to-many class="utn.sau.hp.com.modelo.Firmantes" />
-        </set>
+        <property name="convenioFechaAnterior" type="date">
+            <column name="ConvenioFechaAnterior" length="10" />
+        </property>
+        <property name="empresaCuit" type="java.lang.Integer">
+            <column name="EmpresaCUIT" />
+        </property>
     </class>
 </hibernate-mapping>

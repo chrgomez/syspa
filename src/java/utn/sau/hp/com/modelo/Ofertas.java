@@ -1,5 +1,5 @@
 package utn.sau.hp.com.modelo;
-// Generated 13/11/2014 15:37:16 by Hibernate Tools 3.6.0
+// Generated 04/12/2014 23:31:51 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -18,9 +18,9 @@ public class Ofertas  implements java.io.Serializable {
      private Date ofertaVigenciaHasta;
      private String ofertaDescripcion;
      private Set postulacioneses = new HashSet(0);
-     private Set conveniosparticulareses = new HashSet(0);
-     private Set ofertascarrerases = new HashSet(0);
      private Set requisitoscompetenciases = new HashSet(0);
+     private Set ofertascarrerases = new HashSet(0);
+     private Set conveniosparticulareses = new HashSet(0);
 
     public Ofertas() {
     }
@@ -32,15 +32,15 @@ public class Ofertas  implements java.io.Serializable {
         this.ofertaVigenciaHasta = ofertaVigenciaHasta;
         this.ofertaDescripcion = ofertaDescripcion;
     }
-    public Ofertas(Empresas empresas, Date ofertaVigenciaDesde, Date ofertaVigenciaHasta, String ofertaDescripcion, Set postulacioneses, Set conveniosparticulareses, Set ofertascarrerases, Set requisitoscompetenciases) {
+    public Ofertas(Empresas empresas, Date ofertaVigenciaDesde, Date ofertaVigenciaHasta, String ofertaDescripcion, Set postulacioneses, Set requisitoscompetenciases, Set ofertascarrerases, Set conveniosparticulareses) {
        this.empresas = empresas;
        this.ofertaVigenciaDesde = ofertaVigenciaDesde;
        this.ofertaVigenciaHasta = ofertaVigenciaHasta;
        this.ofertaDescripcion = ofertaDescripcion;
        this.postulacioneses = postulacioneses;
-       this.conveniosparticulareses = conveniosparticulareses;
-       this.ofertascarrerases = ofertascarrerases;
        this.requisitoscompetenciases = requisitoscompetenciases;
+       this.ofertascarrerases = ofertascarrerases;
+       this.conveniosparticulareses = conveniosparticulareses;
     }
    
     public Integer getId() {
@@ -85,12 +85,12 @@ public class Ofertas  implements java.io.Serializable {
     public void setPostulacioneses(Set postulacioneses) {
         this.postulacioneses = postulacioneses;
     }
-    public Set getConveniosparticulareses() {
-        return this.conveniosparticulareses;
+    public Set getRequisitoscompetenciases() {
+        return this.requisitoscompetenciases;
     }
     
-    public void setConveniosparticulareses(Set conveniosparticulareses) {
-        this.conveniosparticulareses = conveniosparticulareses;
+    public void setRequisitoscompetenciases(Set requisitoscompetenciases) {
+        this.requisitoscompetenciases = requisitoscompetenciases;
     }
     public Set getOfertascarrerases() {
         return this.ofertascarrerases;
@@ -99,12 +99,12 @@ public class Ofertas  implements java.io.Serializable {
     public void setOfertascarrerases(Set ofertascarrerases) {
         this.ofertascarrerases = ofertascarrerases;
     }
-    public Set getRequisitoscompetenciases() {
-        return this.requisitoscompetenciases;
+    public Set getConveniosparticulareses() {
+        return this.conveniosparticulareses;
     }
     
-    public void setRequisitoscompetenciases(Set requisitoscompetenciases) {
-        this.requisitoscompetenciases = requisitoscompetenciases;
+    public void setConveniosparticulareses(Set conveniosparticulareses) {
+        this.conveniosparticulareses = conveniosparticulareses;
     }
 
 

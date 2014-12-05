@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 04/12/2014 23:31:52 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="utn.sau.hp.com.modelo.Users" table="users" catalog="syspa">
+        <id name="id" type="string">
+            <column name="id" length="36" />
+            <generator class="assigned" />
+        </id>
+        <property name="username" type="string">
+            <column name="username" not-null="true" />
+        </property>
+        <property name="slug" type="string">
+            <column name="slug" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="128" />
+        </property>
+        <property name="passwordToken" type="string">
+            <column name="password_token" length="128" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" />
+        </property>
+        <property name="emailVerified" type="java.lang.Boolean">
+            <column name="email_verified" />
+        </property>
+        <property name="emailToken" type="string">
+            <column name="email_token" />
+        </property>
+        <property name="emailTokenExpires" type="timestamp">
+            <column name="email_token_expires" length="19" />
+        </property>
+        <property name="tos" type="java.lang.Boolean">
+            <column name="tos" />
+        </property>
+        <property name="active" type="java.lang.Boolean">
+            <column name="active" />
+        </property>
+        <property name="lastLogin" type="timestamp">
+            <column name="last_login" length="19" />
+        </property>
+        <property name="lastAction" type="timestamp">
+            <column name="last_action" length="19" />
+        </property>
+        <property name="isAdmin" type="java.lang.Boolean">
+            <column name="is_admin" />
+        </property>
+        <property name="role" type="string">
+            <column name="role" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="19" />
+        </property>
+        <property name="modified" type="timestamp">
+            <column name="modified" length="19" />
+        </property>
+        <set name="userDetailses" table="user_details" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="user_id" length="36" not-null="true" />
+            </key>
+            <one-to-many class="utn.sau.hp.com.modelo.UserDetails" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -32,7 +32,11 @@ public class RequisitoMateriaBean implements Serializable {
     }
 
      public List<Requisitosmaterias> getListaRequisitosMateria() {                  
-        listaRequisitosMateria = dao.findByOferta("1");
+        if(oferta.getOfertaSelec().getId() != null){
+            listaRequisitosMateria = dao.findByOferta(oferta.getOfertaSelec().getId().toString());        
+        }else{
+            listaRequisitosMateria = new ArrayList<>();
+        }
         return listaRequisitosMateria;
         
     }

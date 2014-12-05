@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 13/11/2014 15:37:18 by Hibernate Tools 3.6.0 -->
+<!-- Generated 04/12/2014 23:31:52 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="utn.sau.hp.com.modelo.Tutores" table="tutores" catalog="syspa">
         <id name="id" type="java.lang.Integer">
@@ -15,7 +15,7 @@
             <column name="TutorEmail" length="250" />
         </property>
         <property name="tutorTelefono" type="string">
-            <column name="TutorTelefono" length="250" />
+            <column name="TutorTelefono" length="20" />
         </property>
         <property name="tutorCargo" type="string">
             <column name="TutorCargo" length="250" />
@@ -28,9 +28,15 @@
         </property>
         <set name="conveniosparticulareses" table="conveniosparticulares" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="tutore_id" not-null="true" />
+                <column name="tutore_id" />
             </key>
             <one-to-many class="utn.sau.hp.com.modelo.Conveniosparticulares" />
+        </set>
+        <set name="adendases" table="adendas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="TutorIdAnterior" />
+            </key>
+            <one-to-many class="utn.sau.hp.com.modelo.Adendas" />
         </set>
     </class>
 </hibernate-mapping>

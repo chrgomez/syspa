@@ -1,24 +1,18 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 13/11/2014 15:37:18 by Hibernate Tools 3.6.0 -->
+<!-- Generated 04/12/2014 23:31:52 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="utn.sau.hp.com.modelo.PagosOs" table="pagos_os" catalog="syspa">
         <id name="id" type="java.lang.Integer">
             <column name="id" />
             <generator class="identity" />
         </id>
+        <many-to-one name="conveniosparticulares" class="utn.sau.hp.com.modelo.Conveniosparticulares" fetch="select">
+            <column name="convenioparticulare_id" not-null="true" />
+        </many-to-one>
         <property name="fechapago" type="date">
-            <column name="fechapago" length="10" />
-        </property>
-        <property name="empresaCuit" type="long">
-            <column name="EmpresaCUIT" precision="11" scale="0" not-null="true" />
-        </property>
-        <property name="nroLegajo" type="int">
-            <column name="NroLegajo" not-null="true" />
-        </property>
-        <property name="convenioParticularId" type="int">
-            <column name="ConvenioParticularId" not-null="true" />
+            <column name="fechapago" length="10" not-null="true" />
         </property>
         <property name="periodo" type="date">
             <column name="Periodo" length="10" not-null="true" />

@@ -1,5 +1,5 @@
 package utn.sau.hp.com.modelo;
-// Generated 13/11/2014 15:37:16 by Hibernate Tools 3.6.0
+// Generated 04/12/2014 23:31:51 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -11,27 +11,16 @@ public class PagosOs  implements java.io.Serializable {
 
 
      private Integer id;
+     private Conveniosparticulares conveniosparticulares;
      private Date fechapago;
-     private long empresaCuit;
-     private int nroLegajo;
-     private int convenioParticularId;
      private Date periodo;
 
     public PagosOs() {
     }
 
-	
-    public PagosOs(long empresaCuit, int nroLegajo, int convenioParticularId, Date periodo) {
-        this.empresaCuit = empresaCuit;
-        this.nroLegajo = nroLegajo;
-        this.convenioParticularId = convenioParticularId;
-        this.periodo = periodo;
-    }
-    public PagosOs(Date fechapago, long empresaCuit, int nroLegajo, int convenioParticularId, Date periodo) {
+    public PagosOs(Conveniosparticulares conveniosparticulares, Date fechapago, Date periodo) {
+       this.conveniosparticulares = conveniosparticulares;
        this.fechapago = fechapago;
-       this.empresaCuit = empresaCuit;
-       this.nroLegajo = nroLegajo;
-       this.convenioParticularId = convenioParticularId;
        this.periodo = periodo;
     }
    
@@ -42,33 +31,19 @@ public class PagosOs  implements java.io.Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
+    public Conveniosparticulares getConveniosparticulares() {
+        return this.conveniosparticulares;
+    }
+    
+    public void setConveniosparticulares(Conveniosparticulares conveniosparticulares) {
+        this.conveniosparticulares = conveniosparticulares;
+    }
     public Date getFechapago() {
         return this.fechapago;
     }
     
     public void setFechapago(Date fechapago) {
         this.fechapago = fechapago;
-    }
-    public long getEmpresaCuit() {
-        return this.empresaCuit;
-    }
-    
-    public void setEmpresaCuit(long empresaCuit) {
-        this.empresaCuit = empresaCuit;
-    }
-    public int getNroLegajo() {
-        return this.nroLegajo;
-    }
-    
-    public void setNroLegajo(int nroLegajo) {
-        this.nroLegajo = nroLegajo;
-    }
-    public int getConvenioParticularId() {
-        return this.convenioParticularId;
-    }
-    
-    public void setConvenioParticularId(int convenioParticularId) {
-        this.convenioParticularId = convenioParticularId;
     }
     public Date getPeriodo() {
         return this.periodo;

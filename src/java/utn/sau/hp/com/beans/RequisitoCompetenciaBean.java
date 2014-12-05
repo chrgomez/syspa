@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 import javax.inject.Named;
 import utn.sau.hp.com.dao.RequisitosCompetenciaDao;
@@ -14,7 +13,6 @@ import utn.sau.hp.com.modelo.Requisitoscompetencias;
  *
  * @author christian
  */
-@ManagedBean
 @Named(value = "requisitoCompetenciaBean")
 @SessionScoped
 public class RequisitoCompetenciaBean implements Serializable {
@@ -29,10 +27,14 @@ public class RequisitoCompetenciaBean implements Serializable {
         this.listaRequisitosCompetencia = new ArrayList<>();
     }
 
-     public List<Requisitoscompetencias> getListaRequisitosCompetencia() {                  
-        if (oferta.getOfertaSelec() != null) {
-           listaRequisitosCompetencia = dao.findByOferta("1");
+     public List<Requisitoscompetencias> getListaRequisitosCompetencia() {                              
+        System.out.println("OFERTA_ID SELECCIONADA "+oferta.getOfertaSelec().getId());
+        if(oferta.getOfertaSelec().getId() != null){
+            listaRequisitosCompetencia = dao.findByOferta(oferta.getOfertaSelec().getId().toString());        
+        }else{
+            listaRequisitosCompetencia = new ArrayList<>();
         }
+            
         return listaRequisitosCompetencia;
         
     }

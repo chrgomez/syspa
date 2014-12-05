@@ -1,5 +1,5 @@
 package utn.sau.hp.com.modelo;
-// Generated 13/11/2014 15:37:16 by Hibernate Tools 3.6.0
+// Generated 04/12/2014 23:31:51 by Hibernate Tools 3.6.0
 
 
 import java.util.HashSet;
@@ -12,6 +12,7 @@ public class Areas  implements java.io.Serializable {
 
 
      private Integer id;
+     private Carreras carreras;
      private String areaDescripcion;
      private Set actividadeses = new HashSet(0);
      private Set competenciases = new HashSet(0);
@@ -23,7 +24,8 @@ public class Areas  implements java.io.Serializable {
     public Areas(String areaDescripcion) {
         this.areaDescripcion = areaDescripcion;
     }
-    public Areas(String areaDescripcion, Set actividadeses, Set competenciases) {
+    public Areas(Carreras carreras, String areaDescripcion, Set actividadeses, Set competenciases) {
+       this.carreras = carreras;
        this.areaDescripcion = areaDescripcion;
        this.actividadeses = actividadeses;
        this.competenciases = competenciases;
@@ -35,6 +37,13 @@ public class Areas  implements java.io.Serializable {
     
     public void setId(Integer id) {
         this.id = id;
+    }
+    public Carreras getCarreras() {
+        return this.carreras;
+    }
+    
+    public void setCarreras(Carreras carreras) {
+        this.carreras = carreras;
     }
     public String getAreaDescripcion() {
         return this.areaDescripcion;

@@ -16,7 +16,8 @@ public class RequisitosMateriaDao {
         List<Requisitosmaterias> lista = new ArrayList();
         Session s = HibernateUtil.getSessionFactory().openSession();
         String consulta = "FROM Requisitosmaterias r left join fetch r.materias m "
-                + "left join fetch r.ofertascarreras oc left join fetch oc.carreras c ";
+                + "left join fetch r.ofertascarreras oc left join fetch oc.carreras c "
+                + "WHERE r.ofertascarreras.ofertas.id = "+idOferta;
         try {           
             lista = s.createQuery(consulta).list();                       
         } catch (Exception e) {
@@ -27,7 +28,7 @@ public class RequisitosMateriaDao {
         if(lista.isEmpty()){
                 System.out.println("No se encontraron materias para la oferta seleccionada");
                 return null;                
-            }else{
+            }else{                
                 System.out.println("cant materias requeridas: "+lista.size());
                 return lista;
             }

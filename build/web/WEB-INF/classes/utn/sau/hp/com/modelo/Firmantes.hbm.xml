@@ -1,24 +1,27 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 13/11/2014 15:37:18 by Hibernate Tools 3.6.0 -->
+<!-- Generated 04/12/2014 23:31:52 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="utn.sau.hp.com.modelo.Firmantes" table="firmantes" catalog="syspa">
         <id name="id" type="java.lang.Integer">
             <column name="id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="anexos" class="utn.sau.hp.com.modelo.Anexos" fetch="select">
-            <column name="anexo_id" not-null="true" />
-        </many-to-one>
         <many-to-one name="empresas" class="utn.sau.hp.com.modelo.Empresas" fetch="select">
             <column name="empresa_id" not-null="true" />
         </many-to-one>
+        <many-to-one name="localidades" class="utn.sau.hp.com.modelo.Localidades" fetch="select">
+            <column name="localidade_id" not-null="true" />
+        </many-to-one>
+        <property name="anexoId" type="int">
+            <column name="anexo_id" not-null="true" />
+        </property>
         <property name="firmanteCuil" type="long">
-            <column name="FirmanteCUIL" not-null="true" />
+            <column name="FirmanteCUIL" precision="11" scale="0" not-null="true" />
         </property>
         <property name="empresaCuit" type="long">
-            <column name="EmpresaCUIT" not-null="true" />
+            <column name="EmpresaCUIT" precision="11" scale="0" not-null="true" />
         </property>
         <property name="firmanteNombre" type="string">
             <column name="FirmanteNombre" length="250" not-null="true" />

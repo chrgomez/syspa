@@ -1,5 +1,5 @@
 package utn.sau.hp.com.modelo;
-// Generated 13/11/2014 15:37:16 by Hibernate Tools 3.6.0
+// Generated 04/12/2014 23:31:51 by Hibernate Tools 3.6.0
 
 
 import java.util.HashSet;
@@ -13,9 +13,10 @@ public class Carreras  implements java.io.Serializable {
 
      private int id;
      private String carrera;
-     private Set alumnoses = new HashSet(0);
-     private Set conveniosparticulareses = new HashSet(0);
+     private Set materiases = new HashSet(0);
+     private Set areases = new HashSet(0);
      private Set ofertascarrerases = new HashSet(0);
+     private Set conveniosparticulareses = new HashSet(0);
 
     public Carreras() {
     }
@@ -25,12 +26,13 @@ public class Carreras  implements java.io.Serializable {
         this.id = id;
         this.carrera = carrera;
     }
-    public Carreras(int id, String carrera, Set alumnoses, Set conveniosparticulareses, Set ofertascarrerases) {
+    public Carreras(int id, String carrera, Set materiases, Set areases, Set ofertascarrerases, Set conveniosparticulareses) {
        this.id = id;
        this.carrera = carrera;
-       this.alumnoses = alumnoses;
-       this.conveniosparticulareses = conveniosparticulareses;
+       this.materiases = materiases;
+       this.areases = areases;
        this.ofertascarrerases = ofertascarrerases;
+       this.conveniosparticulareses = conveniosparticulareses;
     }
    
     public int getId() {
@@ -47,19 +49,19 @@ public class Carreras  implements java.io.Serializable {
     public void setCarrera(String carrera) {
         this.carrera = carrera;
     }
-    public Set getAlumnoses() {
-        return this.alumnoses;
+    public Set getMateriases() {
+        return this.materiases;
     }
     
-    public void setAlumnoses(Set alumnoses) {
-        this.alumnoses = alumnoses;
+    public void setMateriases(Set materiases) {
+        this.materiases = materiases;
     }
-    public Set getConveniosparticulareses() {
-        return this.conveniosparticulareses;
+    public Set getAreases() {
+        return this.areases;
     }
     
-    public void setConveniosparticulareses(Set conveniosparticulareses) {
-        this.conveniosparticulareses = conveniosparticulareses;
+    public void setAreases(Set areases) {
+        this.areases = areases;
     }
     public Set getOfertascarrerases() {
         return this.ofertascarrerases;
@@ -67,6 +69,13 @@ public class Carreras  implements java.io.Serializable {
     
     public void setOfertascarrerases(Set ofertascarrerases) {
         this.ofertascarrerases = ofertascarrerases;
+    }
+    public Set getConveniosparticulareses() {
+        return this.conveniosparticulareses;
+    }
+    
+    public void setConveniosparticulareses(Set conveniosparticulareses) {
+        this.conveniosparticulareses = conveniosparticulareses;
     }
 
 

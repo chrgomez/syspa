@@ -1,18 +1,24 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 13/11/2014 15:37:18 by Hibernate Tools 3.6.0 -->
+<!-- Generated 04/12/2014 23:31:52 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="utn.sau.hp.com.modelo.Departamentos" table="departamentos" catalog="syspa">
-        <id name="id" type="int">
+        <id name="id" type="java.lang.Integer">
             <column name="id" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
-        <property name="provinciaId" type="int">
+        <many-to-one name="provincias" class="utn.sau.hp.com.modelo.Provincias" fetch="select">
             <column name="provincia_id" not-null="true" />
-        </property>
+        </many-to-one>
         <property name="nombre" type="string">
-            <column name="nombre" length="100" not-null="true" />
+            <column name="nombre" length="100" />
         </property>
+        <set name="localidadeses" table="localidades" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="departamento_id" not-null="true" />
+            </key>
+            <one-to-many class="utn.sau.hp.com.modelo.Localidades" />
+        </set>
     </class>
 </hibernate-mapping>

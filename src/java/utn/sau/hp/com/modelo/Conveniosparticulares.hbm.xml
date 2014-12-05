@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 13/11/2014 15:37:18 by Hibernate Tools 3.6.0 -->
+<!-- Generated 04/12/2014 23:31:52 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="utn.sau.hp.com.modelo.Conveniosparticulares" table="conveniosparticulares" catalog="syspa">
         <id name="id" type="java.lang.Integer">
@@ -9,20 +9,29 @@
             <generator class="identity" />
         </id>
         <many-to-one name="tutores" class="utn.sau.hp.com.modelo.Tutores" fetch="select">
-            <column name="tutore_id" not-null="true" />
+            <column name="tutore_id" />
         </many-to-one>
         <many-to-one name="empresas" class="utn.sau.hp.com.modelo.Empresas" fetch="select">
-            <column name="empresa_id" not-null="true" />
+            <column name="empresa_id" />
         </many-to-one>
         <many-to-one name="alumnos" class="utn.sau.hp.com.modelo.Alumnos" fetch="select">
-            <column name="alumno_id" not-null="true" />
+            <column name="alumno_id" />
         </many-to-one>
         <many-to-one name="carreras" class="utn.sau.hp.com.modelo.Carreras" fetch="select">
-            <column name="carrera_id" not-null="true" />
+            <column name="carrera_id" />
         </many-to-one>
         <many-to-one name="ofertas" class="utn.sau.hp.com.modelo.Ofertas" fetch="select">
             <column name="oferta_id" />
         </many-to-one>
+        <property name="contactoNombre" type="string">
+            <column name="ContactoNombre" length="100" />
+        </property>
+        <property name="contactoTelefono" type="string">
+            <column name="ContactoTelefono" length="20" />
+        </property>
+        <property name="contactoCorreo" type="string">
+            <column name="ContactoCorreo" length="100" />
+        </property>
         <property name="fechaInicio" type="date">
             <column name="FechaInicio" length="10" />
         </property>
@@ -35,14 +44,14 @@
         <property name="nombreArt" type="string">
             <column name="NombreART" length="250" />
         </property>
-        <property name="importeArt" type="int">
-            <column name="ImporteArt" precision="5" scale="0" not-null="true" />
+        <property name="importeArt" type="java.lang.Integer">
+            <column name="ImporteArt" precision="5" scale="0" />
         </property>
         <property name="nombreObraSocial" type="string">
             <column name="NombreObraSocial" length="250" />
         </property>
-        <property name="importeObraSocial" type="int">
-            <column name="ImporteObraSocial" precision="5" scale="0" not-null="true" />
+        <property name="importeObraSocial" type="java.lang.Integer">
+            <column name="ImporteObraSocial" precision="5" scale="0" />
         </property>
         <property name="fechaCancelacion" type="date">
             <column name="FechaCancelacion" length="10" />
@@ -51,7 +60,7 @@
             <column name="MotivoCancelacion" length="512" />
         </property>
         <property name="evaluacionAlumno" type="string">
-            <column name="EvaluacionAlumno" length="512" not-null="true" />
+            <column name="EvaluacionAlumno" length="512" />
         </property>
         <property name="fechaFirmaConvenio" type="date">
             <column name="FechaFirmaConvenio" length="10" />
@@ -62,26 +71,32 @@
         <property name="fechaAltaObraSocial" type="date">
             <column name="FechaAltaObraSocial" length="10" />
         </property>
-        <property name="pagaAsignacionEstumulo" type="java.lang.Boolean">
+        <property name="pagaAsignacionEstumulo" type="java.lang.Byte">
             <column name="PagaAsignacionEstumulo" />
         </property>
+        <set name="pagosOses" table="pagos_os" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="convenioparticulare_id" not-null="true" />
+            </key>
+            <one-to-many class="utn.sau.hp.com.modelo.PagosOs" />
+        </set>
         <set name="adendases" table="adendas" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="convenioparticulare_id" not-null="true" />
+                <column name="conveniosparticulare_id" not-null="true" />
             </key>
             <one-to-many class="utn.sau.hp.com.modelo.Adendas" />
-        </set>
-        <set name="pagosArtses" table="pagos_arts" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="convenioparticulare_id" not-null="true" />
-            </key>
-            <one-to-many class="utn.sau.hp.com.modelo.PagosArts" />
         </set>
         <set name="tareases" table="tareas" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="convenioparticulare_id" not-null="true" />
             </key>
             <one-to-many class="utn.sau.hp.com.modelo.Tareas" />
+        </set>
+        <set name="pagosArtses" table="pagos_arts" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="convenioparticulare_id" not-null="true" />
+            </key>
+            <one-to-many class="utn.sau.hp.com.modelo.PagosArts" />
         </set>
     </class>
 </hibernate-mapping>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 13/11/2014 15:37:18 by Hibernate Tools 3.6.0 -->
+<!-- Generated 04/12/2014 23:31:52 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="utn.sau.hp.com.modelo.Ofertas" table="ofertas" catalog="syspa">
         <id name="id" type="java.lang.Integer">
@@ -26,11 +26,11 @@
             </key>
             <one-to-many class="utn.sau.hp.com.modelo.Postulaciones" />
         </set>
-        <set name="conveniosparticulareses" table="conveniosparticulares" inverse="true" lazy="true" fetch="select">
+        <set name="requisitoscompetenciases" table="requisitoscompetencias" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="oferta_id" />
+                <column name="oferta_id" not-null="true" />
             </key>
-            <one-to-many class="utn.sau.hp.com.modelo.Conveniosparticulares" />
+            <one-to-many class="utn.sau.hp.com.modelo.Requisitoscompetencias" />
         </set>
         <set name="ofertascarrerases" table="ofertascarreras" inverse="true" lazy="true" fetch="select">
             <key>
@@ -38,11 +38,11 @@
             </key>
             <one-to-many class="utn.sau.hp.com.modelo.Ofertascarreras" />
         </set>
-        <set name="requisitoscompetenciases" table="requisitoscompetencias" inverse="true" lazy="true" fetch="select">
+        <set name="conveniosparticulareses" table="conveniosparticulares" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="oferta_id" not-null="true" />
+                <column name="oferta_id" />
             </key>
-            <one-to-many class="utn.sau.hp.com.modelo.Requisitoscompetencias" />
+            <one-to-many class="utn.sau.hp.com.modelo.Conveniosparticulares" />
         </set>
     </class>
 </hibernate-mapping>

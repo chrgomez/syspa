@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import utn.sau.hp.com.dao.OfertaDao;

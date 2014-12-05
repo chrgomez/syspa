@@ -1,5 +1,5 @@
 package utn.sau.hp.com.modelo;
-// Generated 13/11/2014 15:37:16 by Hibernate Tools 3.6.0
+// Generated 04/12/2014 23:31:51 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -13,8 +13,8 @@ public class Empresas  implements java.io.Serializable {
 
 
      private Integer id;
+     private Localidades localidades;
      private long empresaCuit;
-     private int idLocalidade;
      private Date convenioFecha;
      private Integer porcentajeGasto;
      private String empresaRazonSocial;
@@ -22,40 +22,42 @@ public class Empresas  implements java.io.Serializable {
      private String empresaDireccion;
      private String empresaCorreo;
      private String empresaTelefono;
-     private String contactoNombre;
-     private String contactoTelefono;
-     private String contactoCorreo;
      private String representanteNombre;
-     private Long representanteDni;
-     private boolean pagaObraSocial;
-     private boolean pagaSeguroTrabajo;
-     private boolean pagaAsignacionEstimulo;
+     private Integer representanteDni;
+     private byte pagaObraSocial;
+     private byte pagaSeguroTrabajo;
+     private byte pagaAsignacionEstimulo;
      private Date convenioFechaBaja;
      private String motivoBaja;
      private String password;
      private byte[] archivoCm;
-     private Set estadocuentases = new HashSet(0);
+     private String contactoNombre;
+     private String contactoCorreo;
+     private String contactoTelefono;
      private Set ofertases = new HashSet(0);
      private Set anexoses = new HashSet(0);
-     private Set conveniosparticulareses = new HashSet(0);
+     private Set estadocuentases = new HashSet(0);
      private Set firmanteses = new HashSet(0);
+     private Set conveniosparticulareses = new HashSet(0);
 
     public Empresas() {
     }
 
 	
-    public Empresas(long empresaCuit, int idLocalidade, Date convenioFecha, String empresaRazonSocial, boolean pagaObraSocial, boolean pagaSeguroTrabajo, boolean pagaAsignacionEstimulo) {
+    public Empresas(Localidades localidades, long empresaCuit, String empresaRazonSocial, byte pagaObraSocial, byte pagaSeguroTrabajo, byte pagaAsignacionEstimulo, String contactoNombre, String contactoCorreo, String contactoTelefono) {
+        this.localidades = localidades;
         this.empresaCuit = empresaCuit;
-        this.idLocalidade = idLocalidade;
-        this.convenioFecha = convenioFecha;
         this.empresaRazonSocial = empresaRazonSocial;
         this.pagaObraSocial = pagaObraSocial;
         this.pagaSeguroTrabajo = pagaSeguroTrabajo;
         this.pagaAsignacionEstimulo = pagaAsignacionEstimulo;
+        this.contactoNombre = contactoNombre;
+        this.contactoCorreo = contactoCorreo;
+        this.contactoTelefono = contactoTelefono;
     }
-    public Empresas(long empresaCuit, int idLocalidade, Date convenioFecha, Integer porcentajeGasto, String empresaRazonSocial, String empresaActividad, String empresaDireccion, String empresaCorreo, String empresaTelefono, String contactoNombre, String contactoTelefono, String contactoCorreo, String representanteNombre, Long representanteDni, boolean pagaObraSocial, boolean pagaSeguroTrabajo, boolean pagaAsignacionEstimulo, Date convenioFechaBaja, String motivoBaja, String password, byte[] archivoCm, Set estadocuentases, Set ofertases, Set anexoses, Set conveniosparticulareses, Set firmanteses) {
+    public Empresas(Localidades localidades, long empresaCuit, Date convenioFecha, Integer porcentajeGasto, String empresaRazonSocial, String empresaActividad, String empresaDireccion, String empresaCorreo, String empresaTelefono, String representanteNombre, Integer representanteDni, byte pagaObraSocial, byte pagaSeguroTrabajo, byte pagaAsignacionEstimulo, Date convenioFechaBaja, String motivoBaja, String password, byte[] archivoCm, String contactoNombre, String contactoCorreo, String contactoTelefono, Set ofertases, Set anexoses, Set estadocuentases, Set firmanteses, Set conveniosparticulareses) {
+       this.localidades = localidades;
        this.empresaCuit = empresaCuit;
-       this.idLocalidade = idLocalidade;
        this.convenioFecha = convenioFecha;
        this.porcentajeGasto = porcentajeGasto;
        this.empresaRazonSocial = empresaRazonSocial;
@@ -63,9 +65,6 @@ public class Empresas  implements java.io.Serializable {
        this.empresaDireccion = empresaDireccion;
        this.empresaCorreo = empresaCorreo;
        this.empresaTelefono = empresaTelefono;
-       this.contactoNombre = contactoNombre;
-       this.contactoTelefono = contactoTelefono;
-       this.contactoCorreo = contactoCorreo;
        this.representanteNombre = representanteNombre;
        this.representanteDni = representanteDni;
        this.pagaObraSocial = pagaObraSocial;
@@ -75,11 +74,14 @@ public class Empresas  implements java.io.Serializable {
        this.motivoBaja = motivoBaja;
        this.password = password;
        this.archivoCm = archivoCm;
-       this.estadocuentases = estadocuentases;
+       this.contactoNombre = contactoNombre;
+       this.contactoCorreo = contactoCorreo;
+       this.contactoTelefono = contactoTelefono;
        this.ofertases = ofertases;
        this.anexoses = anexoses;
-       this.conveniosparticulareses = conveniosparticulareses;
+       this.estadocuentases = estadocuentases;
        this.firmanteses = firmanteses;
+       this.conveniosparticulareses = conveniosparticulareses;
     }
    
     public Integer getId() {
@@ -89,19 +91,19 @@ public class Empresas  implements java.io.Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
+    public Localidades getLocalidades() {
+        return this.localidades;
+    }
+    
+    public void setLocalidades(Localidades localidades) {
+        this.localidades = localidades;
+    }
     public long getEmpresaCuit() {
         return this.empresaCuit;
     }
     
     public void setEmpresaCuit(long empresaCuit) {
         this.empresaCuit = empresaCuit;
-    }
-    public int getIdLocalidade() {
-        return this.idLocalidade;
-    }
-    
-    public void setIdLocalidade(int idLocalidade) {
-        this.idLocalidade = idLocalidade;
     }
     public Date getConvenioFecha() {
         return this.convenioFecha;
@@ -152,27 +154,6 @@ public class Empresas  implements java.io.Serializable {
     public void setEmpresaTelefono(String empresaTelefono) {
         this.empresaTelefono = empresaTelefono;
     }
-    public String getContactoNombre() {
-        return this.contactoNombre;
-    }
-    
-    public void setContactoNombre(String contactoNombre) {
-        this.contactoNombre = contactoNombre;
-    }
-    public String getContactoTelefono() {
-        return this.contactoTelefono;
-    }
-    
-    public void setContactoTelefono(String contactoTelefono) {
-        this.contactoTelefono = contactoTelefono;
-    }
-    public String getContactoCorreo() {
-        return this.contactoCorreo;
-    }
-    
-    public void setContactoCorreo(String contactoCorreo) {
-        this.contactoCorreo = contactoCorreo;
-    }
     public String getRepresentanteNombre() {
         return this.representanteNombre;
     }
@@ -180,32 +161,32 @@ public class Empresas  implements java.io.Serializable {
     public void setRepresentanteNombre(String representanteNombre) {
         this.representanteNombre = representanteNombre;
     }
-    public Long getRepresentanteDni() {
+    public Integer getRepresentanteDni() {
         return this.representanteDni;
     }
     
-    public void setRepresentanteDni(Long representanteDni) {
+    public void setRepresentanteDni(Integer representanteDni) {
         this.representanteDni = representanteDni;
     }
-    public boolean isPagaObraSocial() {
+    public byte getPagaObraSocial() {
         return this.pagaObraSocial;
     }
     
-    public void setPagaObraSocial(boolean pagaObraSocial) {
+    public void setPagaObraSocial(byte pagaObraSocial) {
         this.pagaObraSocial = pagaObraSocial;
     }
-    public boolean isPagaSeguroTrabajo() {
+    public byte getPagaSeguroTrabajo() {
         return this.pagaSeguroTrabajo;
     }
     
-    public void setPagaSeguroTrabajo(boolean pagaSeguroTrabajo) {
+    public void setPagaSeguroTrabajo(byte pagaSeguroTrabajo) {
         this.pagaSeguroTrabajo = pagaSeguroTrabajo;
     }
-    public boolean isPagaAsignacionEstimulo() {
+    public byte getPagaAsignacionEstimulo() {
         return this.pagaAsignacionEstimulo;
     }
     
-    public void setPagaAsignacionEstimulo(boolean pagaAsignacionEstimulo) {
+    public void setPagaAsignacionEstimulo(byte pagaAsignacionEstimulo) {
         this.pagaAsignacionEstimulo = pagaAsignacionEstimulo;
     }
     public Date getConvenioFechaBaja() {
@@ -236,12 +217,26 @@ public class Empresas  implements java.io.Serializable {
     public void setArchivoCm(byte[] archivoCm) {
         this.archivoCm = archivoCm;
     }
-    public Set getEstadocuentases() {
-        return this.estadocuentases;
+    public String getContactoNombre() {
+        return this.contactoNombre;
     }
     
-    public void setEstadocuentases(Set estadocuentases) {
-        this.estadocuentases = estadocuentases;
+    public void setContactoNombre(String contactoNombre) {
+        this.contactoNombre = contactoNombre;
+    }
+    public String getContactoCorreo() {
+        return this.contactoCorreo;
+    }
+    
+    public void setContactoCorreo(String contactoCorreo) {
+        this.contactoCorreo = contactoCorreo;
+    }
+    public String getContactoTelefono() {
+        return this.contactoTelefono;
+    }
+    
+    public void setContactoTelefono(String contactoTelefono) {
+        this.contactoTelefono = contactoTelefono;
     }
     public Set getOfertases() {
         return this.ofertases;
@@ -257,12 +252,12 @@ public class Empresas  implements java.io.Serializable {
     public void setAnexoses(Set anexoses) {
         this.anexoses = anexoses;
     }
-    public Set getConveniosparticulareses() {
-        return this.conveniosparticulareses;
+    public Set getEstadocuentases() {
+        return this.estadocuentases;
     }
     
-    public void setConveniosparticulareses(Set conveniosparticulareses) {
-        this.conveniosparticulareses = conveniosparticulareses;
+    public void setEstadocuentases(Set estadocuentases) {
+        this.estadocuentases = estadocuentases;
     }
     public Set getFirmanteses() {
         return this.firmanteses;
@@ -270,6 +265,13 @@ public class Empresas  implements java.io.Serializable {
     
     public void setFirmanteses(Set firmanteses) {
         this.firmanteses = firmanteses;
+    }
+    public Set getConveniosparticulareses() {
+        return this.conveniosparticulareses;
+    }
+    
+    public void setConveniosparticulareses(Set conveniosparticulareses) {
+        this.conveniosparticulareses = conveniosparticulareses;
     }
 
 
