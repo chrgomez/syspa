@@ -7,7 +7,7 @@
         <from-view-id>/*</from-view-id>
         <navigation-case>
             <from-outcome>ofertas</from-outcome>
-            <to-view-id>/ofertas/pasantias_vigentes.xhtml</to-view-id>
+            <to-view-id>/ofertas/ofertas.xhtml</to-view-id>
             <redirect>1</redirect>
         </navigation-case>
     </navigation-rule>
@@ -30,8 +30,16 @@
     <navigation-rule>
         <from-view-id>/*</from-view-id>
         <navigation-case>
-            <from-outcome>pasantiasencurso</from-outcome>
-            <to-view-id>/pasantias/pasantiasencurso.xhtml</to-view-id>
+            <from-outcome>pasantias</from-outcome>
+            <to-view-id>/pasantias/pasantias.xhtml</to-view-id>
+            <redirect>1</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/*</from-view-id>
+        <navigation-case>
+            <from-outcome>postulaciones</from-outcome>
+            <to-view-id>/postulaciones/postulaciones.xhtml</to-view-id>
             <redirect>1</redirect>
         </navigation-case>
     </navigation-rule>

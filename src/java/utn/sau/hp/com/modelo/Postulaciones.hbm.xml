@@ -18,10 +18,10 @@
             <column name="FechaPostulacion" length="10" not-null="true" />
         </property>
         <property name="fechaSeleccion" type="date">
-            <column name="FechaSeleccion" length="10" not-null="true" />
+            <column name="FechaSeleccion" length="10" not-null="false" />
         </property>
         <property name="cumpleRequisitosAcademicos" type="byte">
-            <column name="CumpleRequisitosAcademicos" not-null="true" />
+            <column name="CumpleRequisitosAcademicos" not-null="false" />
         </property>
     </class>
 </hibernate-mapping>

@@ -1,7 +1,9 @@
 package utn.sau.hp.com.beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -24,10 +26,12 @@ public class PostulacionBean implements Serializable {
     @Inject
     private LoginBean alumno;
     private PostulacionDao dao;
+    private List<Postulaciones> listaPostulaciones;
     
     public PostulacionBean() {
         this.postulacion = new Postulaciones();
         this.dao = new PostulacionDao();
+        this.listaPostulaciones = new ArrayList<Postulaciones>();
     }
 
     public Postulaciones getPostulacion() {
@@ -61,4 +65,13 @@ public class PostulacionBean implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, messages);        
     }
     
+    public List<Postulaciones> getListaPostulaciones() {
+        System.out.println(alumno.getUserLoggedIn().getId().toString());
+        this.listaPostulaciones = dao.findByAlumno(alumno.getUserLoggedIn().getId().toString());
+        return listaPostulaciones;
+    }
+    
+    public void setListaPostulaciones(List<Postulaciones> listaPostulaciones) {
+        this.listaPostulaciones = listaPostulaciones;
+    }
 }

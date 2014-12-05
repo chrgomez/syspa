@@ -16,9 +16,7 @@
         <p:accordionPanel>
             <p:tab title="Datos Personales">
                 <h:panelGrid columns="2">
-                    <p:outputLabel for="nombre" value="Nombre" />
-                    <p:outputLabel id="nombre" value="#{loginBean.getAlumno().nombre}" />
-                    <p:outputLabel for="apellido" value="Apellido" />
+                    <p:outputLabel for="apellido" value="Apellido y Nombre" />
                     <p:outputLabel id="apellido" value="#{loginBean.getAlumno().apellido}" />
                     <p:outputLabel for="fechaNacim" value="Fecha de Nacimiento" />
                     <p:outputLabel id="fechaNacim" value="#{loginBean.getAlumno().fechaNacimiento}" />
@@ -42,9 +40,6 @@
                     <p:commandButton id="btnActualizarAlumno" value="Actualizar" action="#{alumnoBean.doActualizarAlumno}"/>
                 </h:panelGrid>
             </p:tab>  
-            <p:tab title="Curriculum Vitae">
-                    
-            </p:tab>
         </p:accordionPanel>
     </h:form>
     </ui:define>

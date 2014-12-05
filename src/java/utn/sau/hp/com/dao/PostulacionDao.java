@@ -6,6 +6,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import utn.sau.hp.com.modelo.Alumnos;
+import utn.sau.hp.com.modelo.Conveniosparticulares;
 import utn.sau.hp.com.modelo.Ofertas;
 import utn.sau.hp.com.modelo.Postulaciones;
 import utn.sau.hp.com.util.HibernateUtil;
@@ -50,4 +51,22 @@ public class PostulacionDao {
             }
     }
     
+    public List<Postulaciones> findByAlumno(String id){
+        List<Postulaciones> lista = new ArrayList();
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        String consulta = "FROM Postulaciones p left join fetch p.alumnos a left join fetch p.ofertas o left join fetch o.empresas e "
+                + "WHERE a.id ="+id;
+        try {           
+            lista = s.createQuery(consulta).list();                       
+        } catch (HibernateException e) {
+            System.out.println("Error PostulacionDao findByAlumnoid "+e);
+        }finally{
+            s.close();
+        }
+        if(lista.isEmpty()){
+                return null;                
+            }else{
+                return lista;
+            }
+    }
 }

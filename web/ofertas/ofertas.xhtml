@@ -33,12 +33,12 @@
                                      selection="#{ofertaBean.ofertaSelec}"
                                      selectionMode="single"
                                      paginator="true" rows="10"     
-                                     paginatorPosition="top"
+                                     paginatorPosition="bottom"
                                      paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                      rowsPerPageTemplate="10,15,30"
-                                     emptyMessage="No existen Ofertas de Pasantias Vigentes.">
+                                     emptyMessage="No existen Ofertas de Pasantías Vigentes.">
                             <f:facet name="header" >
-                                Ofertas de Pasantias Vigentes
+                                Ofertas de Pasantías Vigentes
                             </f:facet>   
                             <p:column headerText="Empresa">
                                 <h:outputText value="#{oferta.empresas.empresaRazonSocial}" />

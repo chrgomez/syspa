@@ -8,6 +8,7 @@ package utn.sau.hp.com.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import utn.sau.hp.com.modelo.Conveniosparticulares;
 import utn.sau.hp.com.util.HibernateUtil;
@@ -23,11 +24,11 @@ public class ConvenioDao {
         List<Conveniosparticulares> lista = new ArrayList();
         Session s = HibernateUtil.getSessionFactory().openSession();
         String consulta = "FROM Conveniosparticulares c left join fetch c.alumnos a left join fetch c.empresas e "
-                + "WHERE a.id ="+id; 
+                + "WHERE a.id ="+id;
         try {           
-            lista = s.createQuery(consulta).list();                       
-        } catch (Exception e) {
-            System.out.println("Error ConvenioparticularDao findByAlumnoid "+e);
+            lista = s.createQuery(consulta).list();
+        } catch (HibernateException e) {
+            System.out.println("Error ConvenioparticularDao findByAlumno "+e);
         }finally{
             s.close();
         }
@@ -37,5 +38,5 @@ public class ConvenioDao {
                 return lista;
             }
     }
- 
+
 }

@@ -2,17 +2,13 @@ package utn.sau.hp.com.beans;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.ListIterator;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import utn.sau.hp.com.dao.ConvenioDao;
-import utn.sau.hp.com.dao.OfertaDao;
 import utn.sau.hp.com.modelo.Conveniosparticulares;
-import utn.sau.hp.com.modelo.Ofertas;
 
 /**
  *
@@ -26,6 +22,7 @@ public class ConvenioBean implements Serializable {
     private ConvenioDao dao;
     @Inject
     private LoginBean alumno;
+    private String fechaFilter;
 
     public ConvenioBean() {
         this.listaConvenios = new ArrayList<Conveniosparticulares>();
@@ -35,15 +32,22 @@ public class ConvenioBean implements Serializable {
     public List<Conveniosparticulares> getListaConvenios() {
         System.out.println(alumno.getUserLoggedIn().getId().toString());
         this.listaConvenios = dao.findByAlumno(alumno.getUserLoggedIn().getId().toString());
-        return listaConvenios;
+        return listaConvenios;       
     }
 
     public void setListaConvenios(List<Conveniosparticulares> listaConvenios) {
         this.listaConvenios = listaConvenios;
     }
+
+    public String getFechaFilter() {
+        return fechaFilter;
+    }
+
+    public void setFechaFilter(String fechaFilter) {
+        this.fechaFilter = fechaFilter;
+    }
     
-    
-   
-    
- 
+    public void doFiltrar(){
+        getListaConvenios();
+    }
 }

@@ -11,28 +11,29 @@
         <ui:composition template="./../template.xhtml">
 
             <ui:define name="content">
-                <h:form id="formConvenios" >
+                <h:form id="formPostulacion" >
                     <p:growl id="msgs" showDetail="true" />
                     
-                    <p:dataTable id="convenioTable" var="convenio" value="#{convenioBean.listaConvenios}" rowKey="#{convenio.id}"
-                                emptyMessage="No existen Pasantias Vigentes.">
+                    <p:dataTable id="postulacionTable" var="postulacion" value="#{postulacionBean.listaPostulaciones}" rowKey="#{postulacion.id}"
+                                emptyMessage="No existen postulaciones.">
                         <f:facet name="header" >
-                            Pasantías en curso
+                            Postulaciones
                         </f:facet>   
-                        <p:column headerText="Desde">
-                            <h:outputText value="#{convenio.fechaInicio}" >
+                        <p:column headerText="Fecha de postulación">
+                            <h:outputText value="#{postulacion.fechaPostulacion}" >
                                 <f:convertDateTime type="date" dateStyle="medium" timeZone="GMT-3"/>
                         </h:outputText>
-                        </p:column>
-                        <p:column headerText="Hasta">
-                            <h:outputText value="#{convenio.fechaFin}" >
-                                <f:convertDateTime type="date" dateStyle="medium" timeZone="GMT-3"/>
-                        </h:outputText>
-                        </p:column>
+                        </p:column>  
                         <p:column headerText="Empresa">
-                            <h:outputText value="#{convenio.empresas.empresaRazonSocial}" >  
+                            <h:outputText value="#{postulacion.ofertas.empresas.empresaRazonSocial}" >
+                                <f:convertDateTime type="date" dateStyle="medium" timeZone="GMT-3"/>
                         </h:outputText>
-                        </p:column>
+                        </p:column> 
+                         <p:column headerText="Descripción">
+                        <h:outputText value="#{postulacion.ofertas.ofertaDescripcion}" >
+                                <f:convertDateTime type="date" dateStyle="medium" timeZone="GMT-3"/>
+                        </h:outputText>
+                        </p:column>  
                     </p:dataTable>
                 </h:form>
                 
