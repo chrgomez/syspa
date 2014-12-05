@@ -15,7 +15,8 @@ public class AlumnoDao {
     public Alumnos findByLegajo(Alumnos alu){
         Alumnos a = new Alumnos();
         Session s = HibernateUtil.getSessionFactory().openSession();
-        String consulta = "FROM Alumnos WHERE nroLegajo = "+alu.getNroLegajo();
+        String consulta = "FROM Alumnos a left join fetch a.localidades l "
+                + "WHERE nroLegajo = "+alu.getNroLegajo();
         try {           
             a = (Alumnos) s.createQuery(consulta).uniqueResult();           
             if(a==null){

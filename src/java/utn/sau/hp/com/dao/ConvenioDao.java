@@ -28,7 +28,7 @@ public class ConvenioDao {
         try {           
             lista = s.createQuery(consulta).list();
         } catch (HibernateException e) {
-            System.out.println("Error ConvenioparticularDao findByAlumno "+e);
+            System.out.println("Error ConvenioDao findByAlumno "+e);
         }finally{
             s.close();
         }

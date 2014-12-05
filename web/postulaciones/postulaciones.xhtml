@@ -8,14 +8,14 @@
 
     <body>
 
-        <ui:composition template="./../template.xhtml">
+        <ui:composition template="./../indexlogin.xhtml">
 
             <ui:define name="content">
                 <h:form id="formPostulacion" >
                     <p:growl id="msgs" showDetail="true" />
                     
                     <p:dataTable id="postulacionTable" var="postulacion" value="#{postulacionBean.listaPostulaciones}" rowKey="#{postulacion.id}"
-                                emptyMessage="No existen postulaciones.">
+                                emptyMessage="No existen postulaciones registradas.">
                         <f:facet name="header" >
                             Postulaciones
                         </f:facet>   

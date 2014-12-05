@@ -31,21 +31,20 @@
                 <p:growl id="msg" sticky="true" showDetail="true" life="3000" />
                 <h:form id="formMenu">                                          
                     <p:menubar >                                                                      
-                        <p:menuitem value="Ofertas" icon="ui-icon-document" action="ofertas" ajax="false"/>
+                        <p:menuitem value="Ofertas" icon="ui-icon-document" action="ofertaslogin" ajax="false"/>
                         <p:menuitem value="Reglamentación" action="reglamentacion" icon="ui-icon-contact" />
                        
                         <f:facet name="options">
                             <p:outputLabel style="margin-right:10px" value="#{loginBean.userLoggedIn.apellido}" />
-                            <p:commandButton type="btnLogin" value="Ingresar" icon="ui-icon-person" oncomplete="loginDialog.show()" /> 
-                            <p:menuButton id="opciones" value="Opciones"  style='display:hidden;'>                                
+                            <p:menuButton id="opciones" value="Opciones">                                
                                 <p:menuitem value="Postulaciones" action="postulaciones" icon="ui-icon-disk"/>
                                 <p:menuitem value="Pasantías" action="pasantias" icon="ui-icon-arrowrefresh-1-w"/>
                             </p:menuButton>
-                            <p:menuButton id="cuenta" value="Mi Cuenta"  style='display:hidden;' >
+                            <p:menuButton id="cuenta" value="Mi Cuenta">
                                 <p:menuitem value="Datos personales" action="datospersonales" icon="ui-icon-disk"/>
                                 <p:menuitem value="Cambiar contraseña" icon="ui-icon-arrowrefresh-1-w" oncomplete="claveDialog.show()"/>
                                 <p:separator />
-                                <p:menuitem value="Salir" update=":formMenu" actionListener="#{loginBean.logout}" icon="ui-icon-extlink"/>
+                                <p:menuitem value="Salir" update=":formMenu" action="salir" actionListener="#{loginBean.logout}" icon="ui-icon-extlink"/>
                             </p:menuButton>
                         </f:facet>     
                             
@@ -53,23 +52,6 @@
                 </h:form>                                  
             </ui:insert>
         </div>
-        
-        <h:form id="formLogin">     
-            <p:dialog id="loginDlg" header="Iniciar Sesión" widgetVar="loginDialog" resizable="false" showEffect="fade" hideEffect="drop" modal="true">
-                <h:panelGrid  columns="2">
-                    <h:outputLabel for="username" value="Legajo" />
-                    <p:inputText id="username" value="#{loginBean.alumno.nroLegajo}" required="true" label="username" />
-
-                    <h:outputLabel for="password" value="Contraseña" />
-                    <p:password id="password" value="#{loginBean.alumno.password}" required="true" label="password" />
-
-                    <f:facet name="footer">
-                        <p:commandButton value="Ingresar" update=":formMenu" actionListener="#{loginBean.login(event)}" onclick="loginDialog.hide()"
-                                         oncomplete="handleLoginRequest(xhr, status, args)" ajax="true"/>
-                    </f:facet>  
-                </h:panelGrid>                    
-            </p:dialog>            
-        </h:form>
         
         <h:form id="formClave">     
             <p:dialog id="claveDlg" header="Cambiar Contraseña" widgetVar="claveDialog" resizable="false" showEffect="fade" hideEffect="explode" modal="true">

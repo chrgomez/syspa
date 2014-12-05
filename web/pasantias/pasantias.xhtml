@@ -8,7 +8,7 @@
 
     <body>
 
-        <ui:composition template="./../template.xhtml">
+        <ui:composition template="./../indexlogin.xhtml">
 
             <ui:define name="content">
                 <h:form id="formConvenios" >
@@ -19,7 +19,7 @@
                                     <f:selectItem itemLabel="Pasantías finalizadas" itemValue="Pasantías finalizadas" />
                     </p:selectOneMenu>
                     <p:dataTable id="convenioTable" var="convenio" value="#{convenioBean.listaConvenios}" rowKey="#{convenio.id}"
-                                emptyMessage="No existen Pasantias Vigentes.">
+                                emptyMessage="No existen pasantías registradas.">
                         <f:facet name="header" >
                             Pasantías
                         </f:facet>   

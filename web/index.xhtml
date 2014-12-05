@@ -1,17 +1,101 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version='1.0' encoding='UTF-8' ?> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
 
-    <body>
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>SYSPA - Sistema de Gestión de Pasantias</title>
+    </h:head>
 
-        <ui:composition template="./template.xhtml">
+    <h:body>
 
-            <ui:define name="content">
+        <div id="top">
+            <ui:insert name="top">                                   
                 
-            </ui:define>
+                <h:form id="formTop">
+                    <p:graphicImage width="100%" height="auto" value="/resources/images/banner.png"/>                                              
+                    <p:ajaxStatus  onstart="dlgLoad.show()" oncomplete="dlgLoad.hide()" onerror="dlgLoad.hide()"/>  
+                        <p:dialog widgetVar="dlgLoad" resizable="false" closable="false" modal="true"> 
+                            CARGANDO...
+                            <br/>
+                            <p:graphicImage value="/resources/images/ajax-loader.gif" style="position: relative;left: 50% ;"/>
+                        </p:dialog>  
+                </h:form>               
+                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                <p:growl id="msg" sticky="true" showDetail="true" life="3000" />
+                <h:form id="formMenu">                                          
+                    <p:menubar >                                                                      
+                        <p:menuitem value="Ofertas" icon="ui-icon-document" action="ofertas" ajax="false"/>
+                        <p:menuitem value="Reglamentación" action="reglamentacion" icon="ui-icon-contact" />
+                       
+                        <f:facet name="options">
+                            <p:outputLabel style="margin-right:10px" value="#{loginBean.userLoggedIn.apellido}" />
+                            <p:commandButton type="btnLogin" value="Ingresar" icon="ui-icon-person" oncomplete="loginDialog.show()" />
+                        </f:facet>     
+                            
+                    </p:menubar>
+                </h:form>                                  
+            </ui:insert>
+        </div>
+        
+        <h:form id="formLogin">     
+            <p:dialog id="loginDlg" header="Iniciar Sesión" widgetVar="loginDialog" resizable="false" showEffect="fade" hideEffect="drop" modal="true">
+                <h:panelGrid  columns="2">
+                    <h:outputLabel for="username" value="Legajo" />
+                    <p:inputText id="username" value="#{loginBean.alumno.nroLegajo}" required="true" label="username" />
 
-        </ui:composition>
+                    <h:outputLabel for="password" value="Contraseña" />
+                    <p:password id="password" value="#{loginBean.alumno.password}" required="true" label="password" />
 
-    </body>
+                    <f:facet name="footer">
+                        <p:commandButton value="Ingresar" update=":formMenu" action="ingresar" actionListener="#{loginBean.login(event)}" onclick="loginDialog.hide()"
+                                         oncomplete="handleLoginRequest(xhr, status, args)" ajax="true"/>
+                    </f:facet>  
+                </h:panelGrid>                    
+            </p:dialog>            
+        </h:form>
+        
+        <div id="content" class="center_content">
+            <ui:insert name="content">
+                
+            </ui:insert>
+        </div>
+        
+        <script type="text/javascript">
+            function loginIn(){
+                alert("Ingreso al Metodo loginIn");                
+                document.getElementById('cuenta').style.display = 'hidden';
+                document.getElementById('opciones').style.display = 'hidden';
+                document.getElementById('login').style.display = 'none';
+                alert("Sale del Metodo loginIn");
+            }
+            
+            function loginOut(){
+                document.getElementById('cuenta').style.display = 'none';
+                document.getElementById('opciones').style.display = 'none';
+                document.getElementById('login').style.display = 'hidden';
+                alert("Ingreso al Metodo loginOut");
+            }
+            
+            function handleLoginRequest(xhr, status, args) {                                
+                if(args.validationFailed || !args.loggedIn) {
+                    PF('#formLogin').jq.effect("shake", {times:3}, 100);
+                }    
+            }
+        </script>       
+
+        <div id="bottom" class="ui-widget-header ui-corner-all">
+            <ui:insert name="bottom">
+                Habilitación Profesional 2014
+            </ui:insert>
+        </div>
+
+    </h:body>
+
 </html>

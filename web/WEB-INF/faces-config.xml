@@ -14,6 +14,14 @@
     <navigation-rule>
         <from-view-id>/*</from-view-id>
         <navigation-case>
+            <from-outcome>ofertaslogin</from-outcome>
+            <to-view-id>/ofertas/ofertaslogin.xhtml</to-view-id>
+            <redirect>1</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/*</from-view-id>
+        <navigation-case>
             <from-outcome>datospersonales</from-outcome>
             <to-view-id>/datospersonales/datos_personales.xhtml</to-view-id>
             <redirect>1</redirect>
@@ -40,6 +48,22 @@
         <navigation-case>
             <from-outcome>postulaciones</from-outcome>
             <to-view-id>/postulaciones/postulaciones.xhtml</to-view-id>
+            <redirect>1</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/*</from-view-id>
+        <navigation-case>
+            <from-outcome>salir</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+            <redirect>1</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/*</from-view-id>
+        <navigation-case>
+            <from-outcome>ingresar</from-outcome>
+            <to-view-id>/indexlogin.xhtml</to-view-id>
             <redirect>1</redirect>
         </navigation-case>
     </navigation-rule>
