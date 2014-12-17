@@ -1,6 +1,7 @@
 package utn.sau.hp.com.dao;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 import org.hibernate.Session;
 import utn.sau.hp.com.modelo.Carreras;
@@ -18,7 +19,11 @@ public class OfertaDao {
         Session s = HibernateUtil.getSessionFactory().openSession();
         String consulta = "FROM Ofertas o left join fetch o.empresas";
         try {           
-            lista = s.createQuery(consulta).list();                       
+            lista = s.createQuery(consulta).list();
+            for (int i = 0; i < lista.size(); i++) {
+               if (lista.get(i).getOfertaVigenciaHasta().before(GregorianCalendar.getInstance().getTime())) 
+                    lista.remove(i);
+            }
         } catch (Exception e) {
             System.out.println("Error OfertaDao findByAll "+e);
         }finally{
@@ -33,31 +38,33 @@ public class OfertaDao {
     
     public String findByCarrerasIdOferta(String id){
         List<Carreras> lista = new ArrayList();
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        String consulta = "SELECT c " +
-            "FROM  Ofertascarreras oc " +
-            "INNER JOIN oc.ofertas o " +
-            "INNER JOIN oc.carreras c " +
-            "WHERE o.id = "+id;
-        try {           
-            lista = s.createQuery(consulta).list();                       
-        } catch (Exception e) {
-            System.out.println("Error OfertaDao findByCarrerasIdOferta "+e);
-        }finally{
-            s.close();
+        if (id != null) {
+            Session s = HibernateUtil.getSessionFactory().openSession();
+            String consulta = "SELECT c " +
+                "FROM  Ofertascarreras oc " +
+                "INNER JOIN oc.ofertas o " +
+                "INNER JOIN oc.carreras c " +
+                "WHERE o.id = "+id;
+            try {           
+                lista = s.createQuery(consulta).list();
+            } catch (Exception e) {
+                System.out.println("Error OfertaDao findByCarrerasIdOferta "+e);
+            }finally{
+                s.close();
+            }
         }
         if(lista.isEmpty()){
-                return null;                
+                return "Todas las carreras";                
             }else{
                 String carreras = "";
                 for (int i = 0; i < lista.size(); i++) {
-                    carreras += lista.get(i).getCarrera()+" - " ;                                    
+                   carreras += lista.get(i).getCarrera()+" - " ;                                    
                 }
 //                System.out.println("CARRERAS: "+carreras.substring(0, carreras.length()-3));
                 return carreras.substring(0, carreras.length()-3);
             }
     }
-    
+
     public List<Ofertas> findByIdCarrera(String id){
         List<Ofertas> lista = new ArrayList();
         Session s = HibernateUtil.getSessionFactory().openSession();
@@ -67,7 +74,11 @@ public class OfertaDao {
             "INNER JOIN oc.carreras c left join fetch o.empresas " +
             "WHERE c.id = "+id;
         try {           
-            lista = s.createQuery(consulta).list();                       
+            lista = s.createQuery(consulta).list();
+            for (int i = 0; i < lista.size(); i++) {
+                if (lista.get(i).getOfertaVigenciaHasta().before(GregorianCalendar.getInstance().getTime())) 
+                    lista.remove(i);
+            }
         } catch (Exception e) {
             System.out.println("Error OfertaDao findByIdCarrera "+e);
         }finally{
@@ -89,7 +100,11 @@ public class OfertaDao {
             "INNER JOIN rc.competencias c left join fetch o.empresas " +
             "WHERE c.id = "+id;
         try {           
-            lista = s.createQuery(consulta).list();                       
+            lista = s.createQuery(consulta).list(); 
+            for (int i = 0; i < lista.size(); i++) {
+                if (lista.get(i).getOfertaVigenciaHasta().before(GregorianCalendar.getInstance().getTime())) 
+                    lista.remove(i);
+            }
         } catch (Exception e) {
             System.out.println("Error OfertaDao findByIdCompetencia "+e);
         }finally{
@@ -103,6 +118,5 @@ public class OfertaDao {
                 return lista;
             }
     }
-    
     
 }

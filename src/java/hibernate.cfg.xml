@@ -5,8 +5,8 @@
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/syspa</property>
-    <property name="hibernate.connection.username">syspa</property>
-    <property name="hibernate.connection.password">hp2014</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">root</property>
     <mapping resource="utn/sau/hp/com/modelo/Tareas.hbm.xml"/>
     <mapping resource="utn/sau/hp/com/modelo/Carreras.hbm.xml"/>
     <mapping resource="utn/sau/hp/com/modelo/Areas.hbm.xml"/>

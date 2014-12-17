@@ -53,13 +53,12 @@ public class PostulacionBean implements Serializable {
                 postulacion.setAlumnos(alumno.getUserLoggedIn());
                 postulacion.setOfertas(oferta.getOfertaSelec());
                 postulacion.setFechaPostulacion(GregorianCalendar.getInstance().getTime());
-                postulacion.setFechaSeleccion(GregorianCalendar.getInstance().getTime());
-                postulacion.setCumpleRequisitosAcademicos(Byte.MIN_VALUE);
+                postulacion.setCumpleRequisitosAcademicos(Byte.valueOf("0"));
                 dao.nuevaPostulacion(postulacion);
     //            System.out.println("Postulacion registrada.");
             }else{
                 messages = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notificación: " ,
-                        alumno.getUserLoggedIn().getApellido()+", "+alumno.getUserLoggedIn().getNombre()+" ya se encuentra postulado para la oferta seleccionada.");
+                        alumno.getUserLoggedIn().getApellido()+" ya se encuentra postulado para la oferta seleccionada.");
             }
         }
         FacesContext.getCurrentInstance().addMessage(null, messages);        

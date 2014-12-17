@@ -49,7 +49,7 @@ public class OfertaBean implements Serializable {
         listaOfertas.clear();
         if(carreraFilter.isEmpty() & competenciaFilter.isEmpty()){
             //NO HAY FILTROS
-            listaOfertas = dao.findByAll();
+            listaOfertas.addAll(dao.findByAll());
         }else{
             //FILTRA POR CARRERA
             if(!carreraFilter.isEmpty() & competenciaFilter.isEmpty()){

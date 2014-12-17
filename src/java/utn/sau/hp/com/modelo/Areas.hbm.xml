@@ -9,7 +9,7 @@
             <generator class="identity" />
         </id>
         <many-to-one name="carreras" class="utn.sau.hp.com.modelo.Carreras" fetch="select">
-            <column name="id_carrera" />
+            <column name="carrera_id" />
         </many-to-one>
         <property name="areaDescripcion" type="string">
             <column name="AreaDescripcion" length="512" not-null="true" />
