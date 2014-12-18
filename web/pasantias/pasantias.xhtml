@@ -13,11 +13,6 @@
             <ui:define name="content">
                 <h:form id="formConvenios" >
                     <p:growl id="msgs" showDetail="true" />
-                    <p:selectOneMenu value="#{convenioBean.fechaFilter}" style="width: 300px;">
-                                    <p:ajax event="valueChange" listener="#{convenioBean.doFiltrar()}" update="convenioTable"/>
-                                    <f:selectItem itemLabel="Pasantías en curso" itemValue="Pasantías en curso" />
-                                    <f:selectItem itemLabel="Pasantías finalizadas" itemValue="Pasantías finalizadas" />
-                    </p:selectOneMenu>
                     <p:dataTable id="convenioTable" var="convenio" value="#{convenioBean.listaConvenios}" rowKey="#{convenio.id}"
                                 emptyMessage="No existen pasantías registradas.">
                         <f:facet name="header" >

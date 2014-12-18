@@ -7,7 +7,15 @@
         <from-view-id>/*</from-view-id>
         <navigation-case>
             <from-outcome>ofertas</from-outcome>
-            <to-view-id>/ofertas/pasantias_vigentes.xhtml</to-view-id>
+            <to-view-id>/ofertas/ofertas.xhtml</to-view-id>
+            <redirect>1</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/*</from-view-id>
+        <navigation-case>
+            <from-outcome>ofertaslogin</from-outcome>
+            <to-view-id>/ofertas/ofertaslogin.xhtml</to-view-id>
             <redirect>1</redirect>
         </navigation-case>
     </navigation-rule>
@@ -30,8 +38,40 @@
     <navigation-rule>
         <from-view-id>/*</from-view-id>
         <navigation-case>
-            <from-outcome>pasantiasencurso</from-outcome>
-            <to-view-id>/pasantias/pasantiasencurso.xhtml</to-view-id>
+            <from-outcome>reglamentacionlogin</from-outcome>
+            <to-view-id>/reglamentacion/reglamentacionlogin.xhtml</to-view-id>
+            <redirect>1</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/*</from-view-id>
+        <navigation-case>
+            <from-outcome>pasantias</from-outcome>
+            <to-view-id>/pasantias/pasantias.xhtml</to-view-id>
+            <redirect>1</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/*</from-view-id>
+        <navigation-case>
+            <from-outcome>postulaciones</from-outcome>
+            <to-view-id>/postulaciones/postulaciones.xhtml</to-view-id>
+            <redirect>1</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/*</from-view-id>
+        <navigation-case>
+            <from-outcome>salir</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+            <redirect>1</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/*</from-view-id>
+        <navigation-case>
+            <from-outcome>ingresar</from-outcome>
+            <to-view-id>/indexlogin.xhtml</to-view-id>
             <redirect>1</redirect>
         </navigation-case>
     </navigation-rule>

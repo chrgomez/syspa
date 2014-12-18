@@ -68,8 +68,7 @@
                 </h:form>
                 
                 <h:form id="formDetalles">     
-                    <p:dialog id="detallesDlg" header="Oferta Vigente N°: #{ofertaBean.ofertaSelec.id} - 
-                              Empresa: #{ofertaBean.ofertaSelec.empresas.empresaRazonSocial}
+                    <p:dialog id="detallesDlg" header="Empresa: #{ofertaBean.ofertaSelec.empresas.empresaRazonSocial}
                               Hasta: #{ofertaBean.ofertaSelec.ofertaVigenciaHasta}" 
                               widgetVar="detalleDialog" resizable="false" showEffect="fade" hideEffect="clip" modal="true">                                                
                         
@@ -90,7 +89,7 @@
                                  rowKey="#{mat.id}"
                                  emptyMessage="Oferta sin Requisitos de Materias">
                         <f:facet name="header" >
-                            Competencias Requeridas
+                            Materias Requeridas
                         </f:facet>                        
                         <p:column headerText="Materia">
                             <h:outputText value="#{mat.materias.materia}" />
@@ -103,7 +102,7 @@
                         </p:column> 
                     </p:dataTable>   
                     <f:facet name="footer">
-                        <p:commandButton id="btnPostularse" value="Postularse" actionListener="#{postulacionBean.doNuevaPostulacion}" onclick="detalleDialog.hide()"/>
+                        <h:outputText value="Debe estar identificado para realizar la postulación."/>
                     </f:facet> 
                 </p:dialog>            
             </h:form>

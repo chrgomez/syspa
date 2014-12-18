@@ -38,6 +38,14 @@
     <navigation-rule>
         <from-view-id>/*</from-view-id>
         <navigation-case>
+            <from-outcome>reglamentacionlogin</from-outcome>
+            <to-view-id>/reglamentacion/reglamentacionlogin.xhtml</to-view-id>
+            <redirect>1</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/*</from-view-id>
+        <navigation-case>
             <from-outcome>pasantias</from-outcome>
             <to-view-id>/pasantias/pasantias.xhtml</to-view-id>
             <redirect>1</redirect>

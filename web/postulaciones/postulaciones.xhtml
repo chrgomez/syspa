@@ -25,14 +25,17 @@
                         </h:outputText>
                         </p:column>  
                         <p:column headerText="Empresa">
-                            <h:outputText value="#{postulacion.ofertas.empresas.empresaRazonSocial}" >
-                                <f:convertDateTime type="date" dateStyle="medium" timeZone="GMT-3"/>
-                        </h:outputText>
+                            <h:outputText value="#{postulacion.ofertas.empresas.empresaRazonSocial}" />
                         </p:column> 
-                         <p:column headerText="Descripción">
+                        <p:column headerText="Descripción">
                         <h:outputText value="#{postulacion.ofertas.ofertaDescripcion}" >
                                 <f:convertDateTime type="date" dateStyle="medium" timeZone="GMT-3"/>
                         </h:outputText>
+                        </p:column>  
+                        <p:column headerText="Fecha de Selección">
+                            <h:outputText value="#{postulacion.fechaSeleccion}" >
+                                <f:convertDateTime type="date" dateStyle="medium" timeZone="GMT-3"/>
+                            </h:outputText>
                         </p:column>  
                     </p:dataTable>
                 </h:form>
